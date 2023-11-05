@@ -15,9 +15,9 @@ The above material might be a little terse to read(but try to read it first) so 
 
 The following is another option if you find the main reading too terse. You can use any other reference to familiarize yourself with the terms. Googling the words intro to discrete probability should already fetch you some material. A few possible books you can use are:
 {: .text-white}
-- William Feller's An introduction to probability theory and its applications{: .text-orange}
-- Grimmett and Stirzaker's Probability and Random Processes{: .text-orange}
-- Grimmett and Welsh's Probability: An Introduction (first two chapters).{: .text-orange}
-
+- William Feller's An introduction to probability theory and its applications
+- Grimmett and Stirzaker's Probability and Random Processes
+- Grimmett and Welsh's Probability: An Introduction (first two chapters).
+{: .text-orange}
 You should probably be able to find PDFs of these online comfortably with just a google search.
 {: .text-white}
