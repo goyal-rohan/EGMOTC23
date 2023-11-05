@@ -6,7 +6,7 @@ fa-icon: cube
 ---
 We will have about 2 classes on the Probabilistic Method and some counting techniques. For this, I want you to be familiar with the basics of probability and expectation. For these two classes, I would like you to have read the following 10-12 page document:
 {: .text-white}
-- **[Main Reading - Intro to Probabilistic Method](/EGMOTC23/pdfs/prob-main-reading.pdf)**
+- **[Main Reading - Intro to Probabilistic Method](/EGMOTC23/pdfs/prob-main-reading.pdf)** Do not worry about things like "Measure" or the formal definition of a probability space. It's good enough to just know the high school(NCERT or whatever board you're in) definition of probability.
 - **[PSet 1]** [**pdf**](/EGMOTC23/pdfs/probabilistic-pset1.pdf)   [**tex**](/EGMOTC23/pdfs/probabilistic-pset1.tex)
 - **[PSet 2]** [**pdf**](/EGMOTC23/pdfs/probabilistic-pset2.pdf)   [**tex**](/EGMOTC23/pdfs/probabilistic-pset2.tex)
 
