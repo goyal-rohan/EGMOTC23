@@ -1,0 +1,15 @@
+---
+title: "home"
+bg: white
+color: black
+style: center
+---
+
+### Whoa! A webpage for EGMO TC 2023 material!? 
+{: .text-purple}
+
+Yes, indeed! You can find all material, I(Rohan) create for the camp. This is just for the students selected for the Indian team selection and training camp for EGMO 2024. Please do not share it further.
+
+I will make a post here for each of the classes I plan to take and slowly add material i.e. reading and problem sets along with additional references here all the way upto EGMOTC. I will also try to make a "Cool Stuff" post which will contain some miscelleneous things which are not relevant to what we do but are closely related and cool. 
+
+
