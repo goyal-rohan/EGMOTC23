@@ -1,7 +1,7 @@
 ---
 title: "Probabilistic Method"
 bg: blue
-color: turqoise
+color: orange
 fa-icon: shuffle
 ---
 
