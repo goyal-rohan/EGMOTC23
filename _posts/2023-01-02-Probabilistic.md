@@ -1,12 +1,12 @@
 ---
 title: "Probabilistic Method"
 bg: blue
-color: white
-fa-icon: check-square-o
+color: turqoise
+fa-icon: shuffle
 ---
 
 We will have about 2 classes on the Probabilistic Method and some counting techniques. For this, I want you to be familiar with the basics of probability and expectation. For these two classes, I would like you to have read the following 10-12 page document:
-- **[Intro to Probabilistic Method](/pdfs/prob-main-reading.pdf)**
+- **[Main Reading - Intro to Probabilistic Method](/pdfs/prob-main-reading.pdf)**
   
 I want you all to try to try proving the theorems and giving it some thought say 3-5 minutes before moving onto the proof. The important thing is that you familiarize yourself with the technique and it's basic implementations. I will soon add a problem set here with 3-4 problems that you would be expected to try and submit before we meet. 
 
