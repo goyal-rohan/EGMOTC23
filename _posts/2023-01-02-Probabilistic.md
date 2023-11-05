@@ -1,8 +1,8 @@
 ---
-title: "Probabilistic Method"
+title: "Probabilistic"
 bg: dark-green
 color: orange
-fa-icon: toggle-on
+fa-icon: cube
 ---
 We will have about 2 classes on the Probabilistic Method and some counting techniques. For this, I want you to be familiar with the basics of probability and expectation. For these two classes, I would like you to have read the following 10-12 page document:
 {: .text-white}
