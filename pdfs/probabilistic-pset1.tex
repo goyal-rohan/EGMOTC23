@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+
+\title{Probabilistic Method Pset 1}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Remark.} \textit{* marked problems are considered harder.\\ ** marked problems are strictly optional for the ones feeling extremely curious\\}
+
+
+\textbf{Problem.} Suppose you have the whole numbers number line, labelled $0,1,2,\ldots$ and a drunk person say, Aditi, starts at $x=7$ and every minute with equal probability goes either left($-1$) or right($+1$). What's the probability that:
+    \begin{enumerate}
+        \item She reaches Ananya who's standing at $x=10$ first or Sunaina who's standing at $x=0$ first?
+        \item What's the expected amount of time before she reaches atleast one of them?
+        \item (*) Can you answer the same questions for general values instead of $0,7$ and $10$? What if she goes right with probability $p$ and left with probability $1-p$?
+        \item (**) Can we ask similar questions in higher dimensions? What if they are playing the same game on the entire integer plane?
+    \end{enumerate}
+
+
+\end{document}

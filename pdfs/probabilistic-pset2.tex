@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+
+\title{Probabilistic Method Pset 2}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Remark.} \textit{* marked problems are considered harder.\\ ** marked problems are strictly optional for the ones feeling extremely curious}
+
+\begin{enumerate}
+    \item (MP4G 2022) Across the face of a rectangular post-it note, you idly draw lines that are parallel to its edges. Each time you draw a line, there is a $50\%$ chance it'll be in each direction and you never draw over an existing line or the edge of the post-it note. After a few minutes, you notice that you've drawn 20 lines. What is the expected number of rectangles that the post-it note will be partitioned into?
+    \item (Folklore) Let $v_1,v_2,\ldots v_n\in \mathbb{R}^n$, all $|v_i|=1$ where $|x|$ refers to the Euclidean distance of $x$ from the origin.  Then there exist $\epsilon_1, \epsilon_2, \ldots \epsilon_n = \pm 1$ such that \[|\epsilon_1v_1+\epsilon_2v_2+\cdots \epsilon_nv_n|\le \sqrt{n}\] and also there exist $\epsilon_1, \epsilon_2, \ldots \epsilon_n = \pm 1$ such that \[|\epsilon_1v_1+\epsilon_2v_2+\cdots \epsilon_nv_n|\ge \sqrt{n}\] 
+    \item (*) Suppose $p>n>10m^2$, with $p$ prime, and let $0<a_1<a_2<\cdots a_m<p$ be integers. Prove that there is an integer $0<x<p$ for which the $m$ numbers \[(xa_i \pmod{p})\pmod n\] are pairwise distinct.
+\end{enumerate}
+
+\end{document}
