@@ -34,6 +34,7 @@ colors:
   turquoise: '#0fbfcf'
   pink: '#f4c2c2'
   dark-green: '#013220'
+  maroon: '#800000'
 
 kramdown:
   auto_ids:  false
