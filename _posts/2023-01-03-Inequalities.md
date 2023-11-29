@@ -1,7 +1,7 @@
 ---
 title: "Inequalities"
 bg: maroon
-color: orange
+color: white
 fa-icon: coffee
 ---
 
