@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+
+\title{Size and Guesstimation: Olympiad}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Remark.} \textit{* marked problems are considered harder.\\ ** marked problems are strictly optional and harder than the rest.\\}
+\textbf{Remark.} Try to do the first three problems atleast.\\
+
+\textbf{Problem 1.} Let $n, m$ be integers greater than $1$, and let $a_1, a_2, \dots, a_m$ be positive integers not greater than $n^m$. Prove that there exist positive integers $b_1, b_2, \dots, b_m$ not greater than $n$, such that\[ \gcd(a_1 + b_1, a_2 + b_2, \dots, a_m + b_m) < n, \]where $\gcd(x_1, x_2, \dots, x_m)$ denotes the greatest common divisor of $x_1, x_2, \dots, x_m$.
+
+\textbf{Problem 2.} Suppose $\, q_{0}, \, q_{1}, \, q_{2}, \ldots \; \,$ is an infinite sequence of integers satisfying the following two conditions:
+\begin{itemize}
+    \item $\, m-n \,$ divides $\, q_{m}-q_{n}\,$ for $\, m > n \geq 0,$
+    \item there is a polynomial $\, P \,$ such that $\, |q_{n}| < P(n) \,$ for all $\, n$
+\end{itemize}
+
+Prove that there is a polynomial $\, Q \,$ such that $\, q_{n}= Q(n) \,$ for all $\, n$.
+
+\textbf{Problem 3.} Does there exist a nonnegative integer $a$ for which the equation
+\[\left\lfloor\frac{m}{1}\right\rfloor + \left\lfloor\frac{m}{2}\right\rfloor + \left\lfloor\frac{m}{3}\right\rfloor + \cdots + \left\lfloor\frac{m}{m}\right\rfloor = n^2 + a\]has more than one million different solutions $(m, n)$ where $m$ and $n$ are positive integers?
+
+\textbf{Problem 4.*} Let $m\ge 2$ be an integer, $A$ a finite set of integers (not necessarily positive) and $B_1,B_2,...,B_m$ subsets of $A$. Suppose that, for every $k=1,2,...,m$, the sum of the elements of $B_k$ is $m^k$. Prove that $A$ contains at least $\dfrac{m}{2}$ elements.
+
+\textbf{Problem 5.**} For a positive integer $n$ we denote by $s(n)$ the sum of the digits of $n$. Let $P(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ be a polynomial, where $n \geqslant 2$ and $a_i$ is a positive integer for all $0 \leqslant i \leqslant n-1$. Could it be the case that, for all positive integers $k$, $s(k)$ and $s(P(k))$ have the same parity?
+
+\textbf{Problem 6.**} Let $p$ be an odd prime, and put $N=\frac{1}{4} (p^3 -p) -1.$ The numbers $1,2, \dots, N$ are painted arbitrarily in two colors, red and blue. For any positive integer $n \leqslant N,$ denote $r(n)$ the fraction of integers $\{ 1,2, \dots, n \}$ that are red.
+Prove that there exists a positive integer $a \in \{ 1,2, \dots, p-1\}$ such that $r(n) \neq a/p$ for all $n = 1,2, \dots , N.$
+
+\end{document}

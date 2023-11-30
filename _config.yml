@@ -35,6 +35,8 @@ colors:
   pink: '#f4c2c2'
   dark-green: '#013220'
   maroon: '#800000'
+  dark-blue: '#1a184d'
+  light-yellow: '#daebb2'
 
 kramdown:
   auto_ids:  false
