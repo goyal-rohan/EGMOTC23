@@ -37,6 +37,8 @@ colors:
   maroon: '#800000'
   dark-blue: '#1a184d'
   light-yellow: '#daebb2'
+  dark-purple: '#2f0b36'
+  light-pink: '#f3cffa'
 
 kramdown:
   auto_ids:  false
