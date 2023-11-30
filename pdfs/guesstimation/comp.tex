@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+
+\title{Size and Guesstimation: Computational}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+
+\textbf{Problem 1. (Newton Iteration)} 
+\begin{itemize}
+    \item Find $\sqrt{2023}$ upto $20$ decimal places (without using the $\sqrt{\cdot{}}$ operation). You are free to write code for this or use a calculator.\footnote{4 iterations of Newton's algorithm are definitely sufficient, 3 iterations might be enough too. Can you argue that 4 iterations are sufficient?}
+    \item Find the first 10 digits of $\pi$. \footnote{$sin \pi=0$ and you can use Newton Iteration)}
+\end{itemize}
+
+\textbf{Problem 2. (Big-O)} Order the function by their sizes as $n\mapsto \infty$?
+\begin{itemize}
+    \item $f(x)=2023\log(n)^{2023}$, $g(x)=\log(\log(F_n^{F_n^2}+3^{3^n}))$\footnote{$F_n$ is the $n$th Fibonacci term}, $h(x)=1.001^n$
+    \item $f(n)=3f\left(\lfloor{} n/2\rfloor{}\right)+2023n$ with $f(1)=1$, $g(n)=1.01g(n-1)-g(n-2)$ with $g(0)=0$ and $g(1)=1$
+    \item $f(n)=2023^{2023^{2023n}}$, $g(n)=2^{2^{2^{2n}}}$, and $h(n)=1.01^{1.01^{1.01^{1.01^{1.01n}}}}$  
+\end{itemize}  
+
+\textbf{Problem 3. (Some contest problems)}
+\begin{itemize}
+    \item Compute $\left\lceil\displaystyle\sum_{k=2023}^{\infty}\frac{2024!-2023!}{k!}\right\rceil$
+    \item For any natural number $n$, expressed in base 10 , let $s(n)$ denote the sum of all its digits. Find all natural numbers $m$ and $n$ such that $m<n$ and
+    \[(s(n))^2=m \text { and }(s(m))^2=n\]
+\end{itemize} 
+
+\end{document}
