@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+
+\title{Constructions PSet}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Problem 1.}
+    Determine whether for every real number $t$ such that $0 < t < \tfrac{1}{2} $ there exists an infinite set $S$ of positive integers such that\[|x-my| > ty\]for every pair of different elements $x$ and $y$ of $S$ and every positive integer $m$ (i.e. $m > 0$).\\
+
+
+\textbf{Problem 2.} Prove that for every $n\in \mathbb N$, there exists a set $S$ of $n$ positive integers such that for any two distinct $a,b\in S$, $a-b$ divides $a$ and $b$ but none of the other elements of $S$.\\
+%(USA TST 2015)
+
+\textbf{Problem 3.} For which integers $n>1$ does there exist a rectangle that can be subdivided into $n$ pairwise noncongruent rectangles similar to the original rectangle?\\
+%Miklos 2016
+
+\textbf{Problem 4.} Euclid has a tool called cyclos which allows him to do the following:
+\begin{itemize}
+    \item Given three non-collinear marked points, draw the circle passing through them.
+    \item Given two marked points, draw the circle with them as endpoints of a diameter.
+    \item Mark any intersection points of two drawn circles or mark a new point on a drawn circle.
+\end{itemize}
+Show that given two marked points, Euclid can draw a circle centered at one of them and passing through the other, using only the cyclos.
+%INMO 2023
+
+\end{document}
