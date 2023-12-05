@@ -39,6 +39,8 @@ colors:
   light-yellow: '#daebb2'
   dark-purple: '#2f0b36'
   light-pink: '#f3cffa'
+  dark-cyan: '#045659'
+  light-cyan: '#adfcff'
 
 kramdown:
   auto_ids:  false

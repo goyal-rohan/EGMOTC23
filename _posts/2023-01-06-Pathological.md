@@ -1,7 +1,7 @@
 ---
 title: "Pathological"
-bg: '#045659'
-color: '#adfcff'
+bg: dark-cyan
+color: light-cyan
 fa-icon: question
 ---
 
