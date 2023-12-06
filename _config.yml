@@ -41,6 +41,8 @@ colors:
   light-pink: '#f3cffa'
   dark-cyan: '#045659'
   light-cyan: '#adfcff'
+  dark-orange: '#5e2501'
+  light-orange: '#f2d6b1'
 
 kramdown:
   auto_ids:  false
