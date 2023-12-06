@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+
+\title{TST Mock 2}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\paragraph{\textbf{Problem 1.}} There are three cities each of which has exactly the same number of citizens, say $n$. Every citizen in each city has exactly a total of $(n+1)$ friends in the other two cities. Show that there exist three people, one from each city, such that they are friends. We assume that friendship is mutual (that is, a symmetric relation).
+
+\paragraph{\textbf{Problem 2.}} Find all real numbers $x_1, \dots, x_{2024}$ that satisfy the following equation for each $1 \le i \le 2024$. (Here $x_{2025} = x_1$.)
+\[ x_i^2 + x_i - 1 = x_{i+1} \]
+
+\paragraph{\textbf{Problem 3.}} Let $m$ be the product of the first 100 primes, and let $S$ denote the set of divisors of $m$ greater than 1 (hence $S$ has exactly $2^{100} - 1$ elements). We wish to color each element of $S$ with one of $k$ colors such that
+\begin{itemize}
+    \item every color is used at least once; and
+    \item any three elements of $S$ whose product is a perfect square have exactly two different colors used among them.
+\end{itemize}
+Find, with proof, all values of $k$ for which this coloring is possible.
+
+\end{document}
