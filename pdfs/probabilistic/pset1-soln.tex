@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+
+\title{Probabilistic Method Pset 1}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Remark.} \textit{* marked problems are considered harder.\\ ** marked problems are strictly optional for the ones feeling extremely curious about this particular setup.\\}
+\textbf{Remark.} Try to do the first two parts atleast and submit whatever progress you get on the last two parts.\\
+
+\textbf{Problem.} Suppose you have the integer number line, labelled $\ldots,-2,-1,0,1,2,\ldots$ and a drunk Aditi starts at $x=7$ and every minute with equal probability goes either left($-1$) or right($+1$).
+    \begin{enumerate}
+        \item Ananya is standing at $x=0$ and Sunaina is at $x=10$. As soon as she reaches either of them, she stops moving and starts talking to them. What's the probability that she reaches Sunaina?
+        \item What's the expected amount of time before she reaches atleast one of them?
+        \item (*) Can you answer the same questions for general values instead of $0,7$ and $10$? What if she goes right with probability $p$ and left with probability $1-p$?
+        \item (**) Now, assume we are on the integer lattice ($\mathbb{Z}\times \mathbb{Z}$) and Sahil is standing at the origin with an iced tea stand for her and she is at $(5,2)$ then what is the probability that she gets an infinite number of iced teas if she moves in each of the 4 directions with equal probability? What if she was in a \textit{higher} dimensional space?  
+    \end{enumerate}
+
+\begin{solution}
+\begin{enumerate}
+    \item We will try to create a recursion and then solve it. So, first we must create variables $p_i$ for $i=0,\cdots 10$ where $p_i$ is the probability that if Aditi is currently at point $i$ then she will reach Sunaina and not Ananya. Now, by definition $p_{10}=1$ and $p_0=0$. Now, if she is at point $i\ne 0,10$, then we get that $p_{i}=\frac{p_{i-1}+p_{i+1}}{2}$. This means that the $p_i$ form an AP with $p_0=0$ and $p_{10}=1$. Thus, $p_i=\frac{i}{10}$, in particular $p_7=0.7$.\qed 
+    \item We will try to create a recursion like the previous part. We now have variables $e_0,\cdots e_{10}$ with $e_i$ the expected number of minutes before she reaches atleast one of them. Clearly, $e_0=e_{10}=0$ and $e_i=1+\frac{e_{i-1}+e_{i+1}}{2}$. Now, $(e_{i}-e_{i-1})-(e_{i+1}-e_i)=2$! This is the relation of a quadratic function as we can think of it as the second forward difference being a constant. Thus, we have a quadratic function with $p_0=0$ and $p_{10}=0$! Thus, it must be of the form $ci(10-i)$ for some constant $c$. Plugging this pack into the relation, we get that $c=1$!. Thus, $e_i=i(10-i)$ i.e. $e_7=21$.\qed
+    \item For the first part, the idea of an AP and quadratic term generalize immediately to tell us that if Aditi is initially at the origin(can assume by translation), Ananya at $-a$ and Sunaina at $+b$ then the probability of reaching Sunaina is $\frac{a}{a+b}$ and expected number of steps is $ab$.\\
+    
+    Now, for the same problem with probability $p$. Let us assume that we are only working from $0$ to $10$ only for convenience now.\\
+
+    Thus, we get that \[p_i=pp_{i+1}+(1-p)p_{i-1}\implies (1-p)(p_{i}-p_{i-1})=p(p_{i+1}-p_i)\]
+    For convenience, let $\alpha=\frac{1-p}{p}$ and $q_i=p_i-p_{i-1}$ for $i=1,\cdots 10$. Now, this gives us the relation
+    \[\alpha q_i=q_{i+1}\]
+    Thus, \[1=p_10-p_0=q_1+q_2+\cdots q_{10}=q_1(1+\alpha+\cdots \alpha^9)\implies q_1=\frac{\alpha-1}{\alpha^{10}-1}\]
+    and \[q_i=\frac{\alpha^{i-1}(1-\alpha)}{\alpha^{10}-1}\implies p_i=\frac{\alpha^i-1}{\alpha^{10}-1}\]
+    and we are done!\\
+
+    Now, finally we have $e_0=e_{10}=0$ and \[e_i=1+pe_{i+1}+(1-p)e_{i-1}\]
+    We can now do the same trick as last time giving us \[(1-p)(e_i-e_{i-1}+\beta)=p(e_{i+1}-e_i+\beta)\]
+    where $\beta$ is such that $\beta=\frac{1}{2p-1}$ (we can do this since $p\ne \frac{1}{2}$). Thus, we let $\alpha=\frac{1-p}{p}$ and $q_i=e_i-e_{i-1}+\beta$.\\
+
+    Now, we have \[10\beta=q_1+\cdots q_{10}=(1+\alpha+\cdots \alpha^9)q_1\implies q_i=\frac{10\beta(1-\alpha)\alpha^{i-1}}{1-\alpha^{10}}\]
+    And finally, $e_i=q_1+\cdots q_i-i\beta=\frac{10\beta (1-\alpha^i)}{1-\alpha^{10}}-i\beta$\qed
+
+    I will let you find the general versions!
+    \item We finally come to the $4$th part! (I will write this up and upload later. Remind me!)
+\end{enumerate}
+\end{solution}
+
+\end{document}
