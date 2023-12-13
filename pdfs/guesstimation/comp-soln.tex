@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{Size and Guesstimation: Computational}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+
+\textbf{Problem 1. (Newton Iteration)} 
+\begin{itemize}
+    \item Find $\sqrt{2023}$ upto $20$ decimal places (without using the $\sqrt{\cdot{}}$ operation). You are free to write code for this or use a calculator.\footnote{4 iterations of Newton's algorithm are definitely sufficient, 3 iterations might be enough too. Can you argue that 4 iterations are sufficient?}
+    \item Find the first 10 digits of $\pi$. \footnote{$sin \pi=0$ and you can use Newton Iteration}
+\end{itemize}
+
+\textbf{Problem 2. (Big-O)} Order the function by their sizes as $n\mapsto \infty$?
+\begin{itemize}
+    \item $f(x)=2023\log(n)^{2023}$, $g(x)=\log(\log(F_n^{F_n^2}+3^{3^n}))$\footnote{$F_n$ is the $n$th Fibonacci term}, $h(x)=1.001^n$
+    \item $f(n)=3f\left(\lfloor{} n/2\rfloor{}\right)+2023n$ with $f(1)=1$, $g(n)=1.01g(n-1)-g(n-2)$ with $g(0)=0$ and $g(1)=1$
+    \item $f(n)=2023^{2023^{2023n}}$, $g(n)=2^{2^{2^{2n}}}$, and $h(n)=1.01^{1.01^{1.01^{1.01^{1.01n}}}}$  
+\end{itemize}  
+
+\textbf{Problem 3. (Some contest problems)}
+\begin{itemize}
+    \item Compute $\left\lceil\displaystyle\sum_{k=2023}^{\infty}\frac{2024!-2023!}{k!}\right\rceil$
+    \item For any natural number $n$, expressed in base 10 , let $s(n)$ denote the sum of all its digits. Find all natural numbers $m$ and $n$ such that $m<n$ and
+    \[(s(n))^2=m \text { and }(s(m))^2=n\]
+\end{itemize} 
+
+\eject
+
+\section*{Solutions}
+
+\subsection*{Problem 1 (Newton Iteration)} \begin{itemize}
+    \item Find $\sqrt{2023}$ upto $20$ decimal places (without using the $\sqrt{\cdot{}}$ operation). You are free to write code for this or use a calculator.
+    \item Find the first 10 digits of $\pi$.
+\end{itemize}
+
+\begin{solution}
+    I have written a short python program for both the approximations. You can check the same using a high-precision calculator too.
+    \begin{lstlisting}[language=python]
+        k=float(45)
+        for i in range(4):
+            k=(k+(2023/k))/2
+        print(k)
+    \end{lstlisting}
+    The answer outputted is: $44.97777228809804$. This is because my system can only handle that many bits. So, I put this into a calculator for one more iteration and got:
+    \[44.977772288098040038527467811867427253575509885245374316455309088\]
+    Wolfram gives \[\sqrt{2023}=44.977772288098040038527467811867427237074406112401653066261685806\] You can see that the ouput we get is indeed correct upto $34$ points after the decimal in just $5$ steps!
+
+    Now, moving onto $\pi$. We observe that $sin(\pi)=0$. So, we use our approximation as $\pi_0=3$ and \[\pi_{i+1}=\pi_i-\frac{\sin(\pi_i)}{\cos(\pi_i)}\]
+
+    Writing the code for this:
+    \begin{lstlisting}[language=python]
+        import math
+        pi=float(3)
+        for i in range(4):
+            pi=pi-(math.sin(pi)/math.cos(pi))
+        print(pi)
+    \end{lstlisting}
+    My system outputs: $3.141592653589793$. This is again due to my systme not handling better. I applied the approximation again using a better calculator and got:
+    \[3.1415926535897932384626433832795028841971693993796258352543\]
+    Wolfram gives the value of $\pi$ as:
+    \[3.1415926535897932384626433832795028841971693993751058209749445923\]
+    This is correct for $47$ digits after the decimal in just $5$ steps!!
+\end{solution}
+
+\subsection*{Problem 2.}
+
+\paragraph*{\textbf{Problem 2.} (Big-O)} Order the function by their sizes as $n\mapsto \infty$?
+\begin{itemize}
+    \item $f(x)=2023\log(n)^{2023}$, $g(x)=\log(\log(F_n^{F_n^2}+3^{3^n}))$\footnote{$F_n$ is the $n$th Fibonacci term}, $h(x)=1.001^n$
+    \item $f(n)=3f\left(\lfloor{} n/2\rfloor{}\right)+2023n$ with $f(1)=1$, $g(n)=1.01g(n-1)-g(n-2)$ with $g(0)=0$ and $g(1)=1$
+    \item $f(n)=2023^{2023^{2023n}}$, $g(n)=2^{2^{2^{2n}}}$, and $h(n)=1.01^{1.01^{1.01^{1.01^{1.01n}}}}$  
+\end{itemize} 
+
+\begin{solution}
+    \begin{itemize}
+        \item $f(x)=O(\log(x)^{2023})$, $g(x)=O\left(\left(\log\log F_n^{F_n^2}\right)+n\right)=O(n+\log F_n)=O(n)$, $h(x)=O(1.001^n)$. Thus, the first is polylogarithmic, second is linear and third is exponential. Thus, for all large enough $n$, we have $f(n)<g(n)<h(n)$
+        \item $f(n)=3f(n/2)+O(n)\implies f(n)=O(n^{3/2})$ by the master theorem. $g(n)=1.01g(n-1)-g(n-2)$ so the answer is of the form $C_1\alpha^n+C_2\beta^n$ where $\alpha$ and $\beta$ are the two roots of $x^{2}=1.01x-1$. Now, both the roots are complex conjugates and have modulus $1$. So, $|g(n)|$ is always bounded!.  
+        \item We take log twice for all function. The functions become $\log\log f(n)=O(n)$, $\log\log g(n)=O(4^n)$ and finally $\log\log h(n)=O(1.01^{1.01^{1.01n}})$. Now, to make the comparison between $g(n)$ and $h(n)$ even more clear, let's take log twice more. Now, $\log \log \log \log f(n)=O(\log\log n)$, $\log \log \log \log g(n)=O(\log n)$, and $\log \log \log \log h(n)=O(n)$ 
+    \end{itemize}
+\end{solution}
+
+\subsection*{Problem 3}
+\paragraph*{\textbf{Problem 3.} (Contest problems)} 
+\begin{itemize}
+    \item Compute $\left\lceil\displaystyle\sum_{k=2023}^{\infty}\frac{2024!-2023!}{k!}\right\rceil$
+    \item For any natural number $n$, expressed in base 10 , let $s(n)$ denote the sum of all its digits. Find all natural numbers $m$ and $n$ such that $m<n$ and
+    \[(s(n))^2=m \text { and }(s(m))^2=n\]
+\end{itemize} 
+
+\begin{solution}
+    \begin{itemize}
+        \item We write the first part simply as \[2024+\left\lceil{}\sum_{k=2024}^{\infty}\frac{2024!}{(k+1)!}-\frac{2023!}{k!}\right\rceil{}\] Now, for all $k\ge 2024$, we have $\frac{2024!}{(k+1)!}<\frac{2023!}{k!}$ as we have $2024<k+1$.\\
+        Thus, the part inside the $\lceil \rceil$ is $<0$. Thus, the value is $\le 2024$. Now, we also have using $k=1$ that the sum is $2023+\left\lceil\displaystyle\sum_{k=2024}\frac{2024!-2023!}{k!}\right\rceil\ge 2024$.
+
+        Thus, the final value is simply $2024$.\qed
+        \item This problem is from RMO 2023:
+            We first observe that if $n$ has $k$ digits, we get that $s(m)^2=n$ and $m$ also has at most $k$ digits. Thus, $10^{k-1}\le (9k)^2$. This is already false for $n=5$. Thus, $n$ has at most $4$ digits but then $s(m)\le 36\implies n\le 1296$.
+            
+            Then, \[s(m)\le 27\implies n\le 729\implies s(m)\le 24\implies n\le 576\]\[\implies s(m)\le 22\implies n\le 484\implies s(m)\le 21\implies n\le 441\]
+            Now, since $n=441$ doesn't work, we get $n\le 400$ as it is also a perfect square.\\
+
+            At this point, we can simply check all $n$! Possibilities of $n$ are $\{1^2, 2^2,\cdots 20^2\}$ but $s(m)\equiv m\not\equiv 2\pmod{3}$ since $m$ is a square.\\
+            
+            Thus, $n\in \{1^2, 3^3, 4^2, 6^2, 7^2, 9^2, 10^2, 12^2, 13^2, 15^2, 16^2, 18^2, 19^2\}$. Checking tells us that $n=256$ gives $m=169$ which indeed works!
+    \end{itemize}
+\end{solution}
+
+\end{document}
