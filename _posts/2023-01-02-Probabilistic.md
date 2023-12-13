@@ -10,7 +10,7 @@ We will have about 2 classes on the Probabilistic Method and some counting techn
 - **[PSet 1]** [**pdf**](pdfs\probabilistic\probabilistic-pset1.pdf)   [**tex**](pdfs\probabilistic\probabilistic-pset1.tex) 
 - **[PSet 1 - Solutions]** [**pdf**](pdfs\probabilistic\pset1-soln.pdf)   [**tex**](pdfs\probabilistic\pset1-soln.tex) 
 - **[PSet 2]** [**pdf**](pdfs\probabilistic\probabilistic-pset2.pdf)   [**tex**](pdfs\probabilistic\probabilistic-pset2.tex)
-
+- **[PSet 2 - Solutions]** [**pdf**](pdfs\probabilistic\pset2-soln.pdf)   [**tex**](pdfs\probabilistic\pset2-soln.tex) 
   
 I want you all to try proving the theorems and giving it some thought say 3-5 minutes before moving onto the proof. The important thing is that you familiarize yourself with the technique and it's basic implementations. You are expected to try the problem sets here  and submit before we meet for the respective class (I recommend trying both before the camp). I will also add full solution files before the camp, latest by 15th December. If they are not up by 12th December, send me a reminder just in case I forgot. In class, I will provide you sheets with 1-2 problems which will also have walkthroughs, cases etc. and you all can work through them in groups or individually and I will be there to listen to any ideas or questions you have. 
 {: .text-white}
