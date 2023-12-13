@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{Constructions PSet}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Problem 1.}
+    Determine whether for every real number $t$ such that $0 < t < \tfrac{1}{2} $ there exists an infinite set $S$ of positive integers such that\[|x-my| > ty\]for every pair of different elements $x$ and $y$ of $S$ and every positive integer $m$ (i.e. $m > 0$).\\
+
+
+\textbf{Problem 2.} Prove that for every $n\in \mathbb N$, there exists a set $S$ of $n$ positive integers such that for any two distinct $a,b\in S$, $a-b$ divides $a$ and $b$ but none of the other elements of $S$.\\
+%(USA TST 2015)
+
+\textbf{Problem 3.} For which integers $n>1$ does there exist a rectangle that can be subdivided into $n$ pairwise noncongruent rectangles similar to the original rectangle?\\
+%Miklos 2016
+
+\textbf{Problem 4.} Euclid has a tool called cyclos which allows him to do the following:
+\begin{itemize}
+    \item Given three non-collinear marked points, draw the circle passing through them.
+    \item Given two marked points, draw the circle with them as endpoints of a diameter.
+    \item Mark any intersection points of two drawn circles or mark a new point on a drawn circle.
+\end{itemize}
+Show that given two marked points, Euclid can draw a circle centered at one of them and passing through the other, using only the cyclos.
+%INMO 2023
+\eject
+\section*{Solutions}
+\subsection*{Problem 1}
+\paragraph*{\textbf{Problem.}} Determine whether for every real number $t$ such that $0 < t < \tfrac{1}{2} $ there exists an infinite set $S$ of positive integers such that\[|x-my| > ty\]for every pair of different elements $x$ and $y$ of $S$ and every positive integer $m$ (i.e. $m > 0$).
+
+\begin{solution}
+    We will construct such a set recursively. We start by defining $S_1=\{4n,10n+1\}$ for large $n$ such that $\frac{n-1}{2n}>t$.\\
+    
+    Now, we will construct a set $S_i$ for all $i\ge$ such that $|S_i|=i+1$, $S_{i-1}\subset S_i$, all $s\in S_i$ are co-prime, and $\forall x\ne y \in S_i$ and $m\in \NN$, we have $|x-my|>ty$.\\
+
+    Since the first element of $S_i$ is even, let $S_i=\{4n, 2y_1+1,\ldots 2y_i+1\}$. Now, find a number $2y_{i+1}+1\equiv y_j+1\pmod{2y_j+1}$ for all $1\le j\le i$, $2y_{i+1}+1\equiv 2n+1\pmod{4n}$ and $y_{i+1}>1000y_i$. Thus, $S_{i+1}=S_i\cup \{2y_{i+1}+1\}$ works!\\
+
+    Finally, let $S=\bigcup\limits_{i=1}^{\infty} S_i$! This works.
+
+\end{solution}
+
+\subsection*{Problem 2}
+\paragraph*{\textbf{Problem. (USA TST 2015)}} Prove that for every $n\in \mathbb N$, there exists a set $S$ of $n$ positive integers such that for any two distinct $a,b\in S$, $a-b$ divides $a$ and $b$ but none of the other elements of $S$.
+\begin{solution}
+    We will define the set \[S=\{A, A+d_1, A+d_1+d_2,\cdots A+d_1+\cdots d_{n-1}\}\]
+    It'll be easier to work with differences as the setup will be more convenient.\\
+
+    Now, let $s_0=A$ and $s_i=A+d_1+\cdots d_i$ for $1\le i\le n-1$. Now, we want $s_i-s_j|A+d_{1}+\cdots d_{j}$.\\
+
+    Thus, we can define $s_{ij}=s_{i+1}+\cdots s_j$. Thus, we have \[s_{ij}|A+s_i\]
+    
+    Now, if $s_{ij}|A+s_k$ for some other $k$ then $s_{ij}|s_{ik}$. So, we will pick $s_i$ so that $s_{ij}\nmid s_{k\ell}$ for any $(i,j)\ne (k,\ell)$.
+    
+    And finally we would want $A\equiv -s_i\pmod{s_{ij}}$. We will construct such a set inductively.\\
+
+    For this, if $(d_1,\cdots d_n)$ works then so does $(d_1M,\cdots d_nM)$ works as well! So, we try to pick an $M$ and prime $p$ which work. So we want that \[(Md_1,\cdots Md_n, p)\] works. The divisibility conditions are all still okay if $p$ is a prime such that $p\nmid M$. Finally, we want to set conditions of the sort \[A\equiv -s_i \pmod{S_ij}\]
+    
+    The new conditions of this form are $Ms_{ij}+p$. (The rest are anyway consistent cause they are just multiplied by factors of $M$.)\\
+
+    These are conditions of the form \[A\equiv -Ms_i \pmod{Ms_{in}+p}\] These are all coprime since $gcd(Ms_{in}+p, Ms_{jn}+p)=gcd(Ms_{ij}, Ms_{jn}+p)$ since we can also let $s_{ij}|M$ for all $i,j$. Similarly, $gcd(Ms_{ij}+p, Ms_{k\ell})$ are all co-prime.\\
+
+    Thus, we are done!\\
+
+    \textbf{Remark.} We took the conditions already there and multiplied all the others and added the final modular condition co-prime to all the others. A neater writeup of the same idea with examples can be found here: \href{https://artofproblemsolving.com/community/c6h617855p3683199}{Evan's solution on AoPS}
+\end{solution}
+
+\subsection*{Problem 3}
+
+\paragraph*{\textbf{Problem. (Miklos 2016)}} For which integers $n>1$ does there exist a rectangle that can be subdivided into $n$ pairwise noncongruent rectangles similar to the original rectangle?\\
+\begin{solution}
+    I will not write a solution for this one, it's better to have one with pictures and such. I recommend you read Evan's solution found here: \href{https://artofproblemsolving.com/community/c6h1332922p7211317}{Evan's solution on the AoPS thread.}\\
+
+    \textbf{Remark.} The idea here is pretty straightforward, you set up the simple setup as one does for Fibonacci type stuff and the last rectangle gives us the freedom. Now, the existence of a ratio that works remains a simple-ish exercise in IVT.
+\end{solution}
+
+\subsection*{Problem 4}
+\paragraph*{\textbf{Problem. (INMO 2023/6)}} 
+Euclid has a tool called cyclos which allows him to do the following:
+\begin{itemize}
+    \item Given three non-collinear marked points, draw the circle passing through them.
+    \item Given two marked points, draw the circle with them as endpoints of a diameter.
+    \item Mark any intersection points of two drawn circles or mark a new point on a drawn circle.
+\end{itemize}
+Show that given two marked points, Euclid can draw a circle centered at one of them and passing through the other, using only the cyclos.
+
+\begin{solution}
+    Good writeups of this exist along with motivation already on AoPS including my writeup and some others. I will just reference a few here:
+    \begin{itemize}
+        \item \href{https://artofproblemsolving.com/community/c6h2995081p26888716}{Anant, Daniel and my solution}
+        \item \href{https://artofproblemsolving.com/community/c6h2995081p26888736}{SPHS1234 on AoPS}
+        \item \href{https://artofproblemsolving.com/community/c6h2995081p26929630}{Clean solution by Evan}
+        \item \href{https://artofproblemsolving.com/community/c6h2995081p26889238}{Additional comments by Anant}
+    \end{itemize}
+
+\textbf{Remark.} I don't really have more comments that probably haven't already been made. I just hope y'all enjoyed the problem! Anant and I definitely did while coming up with it :p
+\end{solution}
+
+
+\end{document}

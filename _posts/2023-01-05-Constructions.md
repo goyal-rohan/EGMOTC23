@@ -13,3 +13,4 @@ The lecture on Constructions will be one long session (with breaks) instead of t
 
 - Some examples and ideas [**Video**]() (*Might take a few days, will be up by 10th December*)
 - PSet [**pdf**](pdfs\constructions\pset.pdf)      [**tex**](pdfs\constructions\pset.tex)
+- Solns [**pdf**](pdfs\constructions\pset-soln.pdf)      [**tex**](pdfs\constructions\pset-soln.tex)
