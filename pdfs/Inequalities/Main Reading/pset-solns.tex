@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+
+
+\title{Inequalities PSet}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Remark.} \textit{* marked problems are considered harder.\\ ** marked problems are strictly optional for the ones feeling extremely curious about this particular setup.\\}
+
+\textbf{Problem 1.} Watch the first video about the AM-GM inequality. Based on the video, write two different proofs of AM-GM inequality in your own words. (the video alludes to 6-7 different proofs)\\
+
+\textbf{Problem 2.} (Rearrangement Inequality) Prove the rearrangement inequality:
+Let $a_1<a_2<\ldots <a_n$ and $b_1<b_2<\ldots < b_n$ be real numbers. Prove that for any permutation $\sigma$ of $\{1,2,\ldots n\}$, we have: \[a_1b_1+a_2b_2+\ldots a_nb_n \ge a_1b_{\sigma(1)}+a_2b_{\sigma(2)}+\ldots a_nb_{\sigma(n)}\]
+
+\textbf{Problem 3.} (INMO 2020) Let $n \geqslant 2$ be an integer and let $1<a_1 \le a_2 \le \dots \le a_n$ be $n$ real numbers such that $a_1+a_2+\dots+a_n=2n$. Prove that \[a_1a_2\dots a_{n-1}+a_1a_2\dots a_{n-2}+\dots+a_1a_2+a_1+2 \leq a_1a_2\dots a_n\]
+
+\textbf{Problem 4.} (ISL 2001 A3) Let $x_1,x_2,\ldots,x_n$ be arbitrary real numbers. Prove the inequality
+
+\[
+\frac{x_1}{1+x_1^2} + \frac{x_2}{1+x_1^2 + x_2^2} + \cdots +
+\frac{x_n}{1 + x_1^2 + \cdots + x_n^2} < \sqrt{n}.
+\]
+\eject
+\section*{Solutions}
+
+\subsection*{Problem 1}
+
+\paragraph{\textbf{Problem 1. (AM-GM Proofs)}} Watch the first video about the AM-GM inequality. Based on the video, write two different proofs of AM-GM inequality in your own words. (the video alludes to 6-7 different proofs)\\
+
+\textit{This problem is left for you to do on your own.}
+
+\subsection*{Problem 2}
+
+\paragraph{\textbf{Problem 2. (Rearrangement)}} Let $a_1<a_2<\ldots <a_n$ and $b_1<b_2<\ldots < b_n$ be real numbers. Prove that for any permutation $\sigma$ of $\{1,2,\ldots n\}$, we have: \[a_1b_1+a_2b_2+\ldots a_nb_n \ge a_1b_{\sigma(1)}+a_2b_{\sigma(2)}+\ldots a_nb_{\sigma(n)}\]
+
+\begin{solution}
+    For any permutation $\sigma$, let $S_{\sigma}=\sum\limits_{i=1}^{n}a_ib_{\sigma(i)}$. We will now prove that $S_{\sigma}$ is maximized when $\sigma$ is the identity permutation, in particular for any permutation $\sigma\ne \textbf{Id}$, we will show some other permutation $\tau$, such that $S_{\tau}>S_{\sigma}$. This is enough to prove the desired result\\
+    
+    If $\sigma\ne \textbf{Id}$ then, $\exists i<j$ such that $\sigma(i)>\sigma(j)$, now let $\tau$ be the permutation with $\sigma(i)$ and $\sigma(j)$ flipped. Then, \[S_{\tau}-S_{\sigma}=a_ib_{\sigma(j)}-a_ib_{\sigma(i)}+a_{j}b_{\sigma(i)}-a_jb_{\sigma{j}}=(a_i-a_j)(b_{\sigma(j)}-b_{\sigma(i)})>0\]
+
+    Thus, we are done!\\
+
+    \textbf{Remark.} Think of the above idea as just repeatedly applying the $n=2$ case i.e. if there's any crossing, it is better to flip the values from $n=2$!
+\end{solution}
+
+\subsection*{Problem 3}
+
+\paragraph{\textbf{Problem 3. (INMO 2020)}} Let $n \geqslant 2$ be an integer and let $1<a_1 \le a_2 \le \dots \le a_n$ be $n$ real numbers such that $a_1+a_2+\dots+a_n=2n$. Prove that \[a_1a_2\dots a_{n-1}+a_1a_2\dots a_{n-2}+\dots+a_1a_2+a_1+2 \leq a_1a_2\dots a_n\]
+
+\begin{solution}
+    This problem has a solution via Chebyshev inequality which is just rearrangement summed over all permutations but we will not get into that for now. We will demonstrate a different solution.\\
+
+    We will prove the result via induction. There is no harm in defining the problem for $n=1$ as well. We simply have $2\le 2$ as $a_1=2$.\\
+
+    Now, we proceed by induction! Now, the typical induction argument would be to take $1<\cdots a_{n-1}$ add in $a_n$ back but that loses the summation property. So, we have to be slightly cleverer about it.\\
+
+    Say, we want to prove that for $a_1+\cdots a_n=2n$ and $1\le a_1\le \cdots a_n$, we have \[a_1a_2\dots a_{n-1}+a_1a_2\dots a_{n-2}+\dots+a_1a_2+a_1+2 \leq a_1a_2\dots a_n\]
+    We use the inductive hypothesis for $n-1$ but with the numbers $a_1\le \cdots a_{n-2}\le a_{n-1}+a_{n}-2$ so that the sum is also correct.\\
+
+    Thus, we have
+    \[a_1a_2\dots a_{n-2}+\dots+a_1a_2+a_1+2 \leq a_1a_2\dots a_{n-2}(a_{n-1}+a_n-2)\]
+    So, if we prove that \[a_1a_2\dots a_{n-1}\leq a_1\cdots a_n-a_1a_2\dots a_{n-2}(a_{n-1}+a_n-2)\]we will be done. Taking out the common part, we want \[a_{n-1}\le a_{n-1}a_n-a_{n-1}-a_n+2\iff 0\le (a_n-2)(a_{n-1}-1)\]
+    which we know is true! Thus, we are done! This kind of induction is also what we did in one of the AM GM proofs discussed. You can also use this argument to find all equality cases!
+\end{solution}
+
+\subsection*{Problem 4}
+
+\paragraph{\textbf{Problem 4. (ISL 2001 A3)}} Let $x_1,x_2,\ldots,x_n$ be arbitrary real numbers. Prove the inequality
+
+\[
+\frac{x_1}{1+x_1^2} + \frac{x_2}{1+x_1^2 + x_2^2} + \cdots +
+\frac{x_n}{1 + x_1^2 + \cdots + x_n^2} < \sqrt{n}.
+\]
+
+\begin{solution}
+    WLOG, all $x_i$ are positive. This is quite a difficult phrasing of the problem to work with so we redefine $s_i=1+x_1^2+\cdots x_i^2$ and $s_0=1$.\\
+    
+    Now, we have $s_0\le s_1<\cdots <s_n$ and we want to show that \[\frac{\sqrt{s_1-s_0}}{s_1}+\frac{\sqrt{s_2-s_1}}{s_2}+\cdots \frac{\sqrt{s_n-s_{n-1}}}{s_n}<\sqrt{n}\]
+
+    Now, we know that $\sum\limits_{i=1}^n a_i^2<1\implies \sum a_i<\sqrt{n}$ using CS-inequality. Thus, it suffices to prove that \[\frac{s_1-s_0}{s_1^2}+\ldots +\frac{s_n-s_{n-1}}{s_n^2}<1\]
+    Finally, we observe that \[\frac{s_i-s_{i-1}}{s_i^2}<\frac{s_i-s_{i-1}}{s_is_{i-1}}=\frac{1}{s_{i-1}}-\frac{1}{s_i}\]
+
+    Using, this inequality, we get that \[\frac{s_1-s_0}{s_1^2}+\ldots +\frac{s_n-s_{n-1}}{s_n^2}<\frac{1}{s_0}-\frac{1}{s_1}+\frac{1}{s_1}-\frac{1}{s_2}+\cdots \frac{1}{s_{n-1}}-\frac{1}{s_n}=1-\frac{1}{s_n} < 1\]
+
+    This is precisely as desired! \\
+
+    \textbf{Remark.} Each step in this solution can primarily be thought of as trying to get a cleaner looking inequality to work with and hoping it works. The redifining with $s_i$ is just an equivalent phrasing, seemingly easier to work with. The application of CS is to just remove the $\sqrt{}$ from everywhere and look for a nicer expression. Once you are the $\frac{s_i-s_{i-1}}{s_i^2}$ stage, then the inequality does look fairly believable (and any casework will tell you that it is). Now imagining the $s_i=i$ might remind you of the standard idea to prove that $\sum \frac{1}{i^2}<2$, the final step to let the sum telescope is something that you would have seen previously atleast in that form.
+\end{solution}
+
+
+\end{document}

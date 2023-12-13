@@ -11,6 +11,7 @@ We will have one class on inequalities during the EGMOTC. Before class, there wi
 - Pre-class materials part 2: **(Cauchy Schwarz and related ideas)** [Video](https://youtu.be/HES8kxfqNWs)  [Slides](pdfs\Inequalities\Main Reading\cs.pdf)
 - Pre-class materials part 3: **(Problem practice)** [Video](https://youtu.be/YjMkPlBoSUg)  [Slides](pdfs\Inequalities\Main Reading\examples.pdf)
 - **PSet** [**pdf**](pdfs\Inequalities\Main Reading\pset.pdf)  [**tex**](pdfs\Inequalities\Main Reading\pset.tex)
+- **Solutions** [**pdf**](pdfs\Inequalities\Main Reading\pset-solns.pdf) [**tex**](pdfs\Inequalities\Main Reading\pset-solns.tex)
 
 Additional/Optional Material:
 - Pranjal's PSS on Inequalities in CAMP 2021 [Video](https://www.youtube.com/live/p0twhToFQGU?si=RO9Gd26b9DWhitft&t=2974)
