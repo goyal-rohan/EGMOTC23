@@ -1,0 +1,260 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+
+\title{Size and Guesstimation: Olympiad}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Remark.} \textit{* marked problems are considered harder.\\ ** marked problems are strictly optional and harder than the rest.\\}
+\textbf{Remark.} Try to do the first three problems atleast.\\
+
+\textbf{Problem 1.} Let $n, m$ be integers greater than $1$, and let $a_1, a_2, \dots, a_m$ be positive integers not greater than $n^m$. Prove that there exist positive integers $b_1, b_2, \dots, b_m$ not greater than $n$, such that\[ \gcd(a_1 + b_1, a_2 + b_2, \dots, a_m + b_m) < n, \]where $\gcd(x_1, x_2, \dots, x_m)$ denotes the greatest common divisor of $x_1, x_2, \dots, x_m$.
+
+\textbf{Problem 2.} Suppose $\, q_{0}, \, q_{1}, \, q_{2}, \ldots \; \,$ is an infinite sequence of integers satisfying the following two conditions:
+\begin{itemize}
+    \item $\, m-n \,$ divides $\, q_{m}-q_{n}\,$ for $\, m > n \geq 0,$
+    \item there is a polynomial $\, P \,$ such that $\, |q_{n}| < P(n) \,$ for all $\, n$
+\end{itemize}
+
+Prove that there is a polynomial $\, Q \,$ such that $\, q_{n}= Q(n) \,$ for all $\, n$.
+
+\textbf{Problem 3.} Does there exist a nonnegative integer $a$ for which the equation
+\[\left\lfloor\frac{m}{1}\right\rfloor + \left\lfloor\frac{m}{2}\right\rfloor + \left\lfloor\frac{m}{3}\right\rfloor + \cdots + \left\lfloor\frac{m}{m}\right\rfloor = n^2 + a\]has more than one million different solutions $(m, n)$ where $m$ and $n$ are positive integers?
+
+\textbf{Problem 4.*} Let $m\ge 2$ be an integer, $A$ a finite set of integers (not necessarily positive) and $B_1,B_2,...,B_m$ subsets of $A$. Suppose that, for every $k=1,2,...,m$, the sum of the elements of $B_k$ is $m^k$. Prove that $A$ contains at least $\dfrac{m}{2}$ elements.\eject
+
+\textbf{Problem 5.**} For a positive integer $n$ we denote by $s(n)$ the sum of the digits of $n$. Let $P(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ be a polynomial, where $n \geqslant 2$ and $a_i$ is a positive integer for all $0 \leqslant i \leqslant n-1$. Could it be the case that, for all positive integers $k$, $s(k)$ and $s(P(k))$ have the same parity?
+
+\textbf{Problem 6.**} Let $p$ be an odd prime, and put $N=\frac{1}{4} (p^3 -p) -1.$ The numbers $1,2, \dots, N$ are painted arbitrarily in two colors, red and blue. For any positive integer $n \leqslant N,$ denote $r(n)$ the fraction of integers $\{ 1,2, \dots, n \}$ that are red.
+Prove that there exists a positive integer $a \in \{ 1,2, \dots, p-1\}$ such that $r(n) \neq a/p$ for all $n = 1,2, \dots , N.$
+
+\section*{Solutions}
+
+\subsection*{Problem 1}
+
+\paragraph*{\textbf{Problem 1. (Unknown)}} Let $n, m$ be integers greater than $1$, and let $a_1, a_2, \dots, a_m$ be positive integers not greater than $n^m$. Prove that there exist positive integers $b_1, b_2, \dots, b_m$ not greater than $n$, such that\[ \gcd(a_1 + b_1, a_2 + b_2, \dots, a_m + b_m) < n, \]where $\gcd(x_1, x_2, \dots, x_m)$ denotes the greatest common divisor of $x_1, x_2, \dots, x_m$.
+
+\begin{solution}
+    For the sake of contradiction, assume that the $\gcd_{i}(a_i+b_i)\ge n$ for all $b_i\in \{1,\cdots n\}$.\\
+
+    Then, observe that for ${\bf b\ne c}\in [n]^m$ such that $b_i\ne c_i$ for atleast one $i$, we cannot have $gcd_i(a_i+b_i)\mid gcd_i(a_i+c_i)$ since else, $d=gcd_i(a_i+b_i)$ and $d|b_i-c_i\forall i$. But, $d\ge n$ and $-n-1\le b_i-c_i\le n-1$. This is impossible unless $b_i=c_i\forall i$ i.e. ${\bf b=c}$. \\
+    
+    Thus, across all possible $b\in [n]^m$, $[n]^m$ different gcds will be created. But the maximum possible gcd is $n^m+n$ and minimum is $n$ but if $n$ is created than $n^m$ and $n^m+n$ cannot be created! This is a contradiction. Thus, all numbers from $n+1,\cdots n^m+n$ occur as gcds but $n^{m-1}+1$ and $n^m+n$ cannot both occur! Thus, we have a contradiction. So some gcd $<n$ will be created.\\
+
+    \textbf{Remark.} The problem as stated is number theory but the crux is just if no small gcd occurs and since all are different, you've too many possibilities...
+\end{solution}
+
+\subsection*{Problem 2}
+
+\paragraph*{\textbf{Problem 2. (USA?)}} Suppose $\, q_{0}, \, q_{1}, \, q_{2}, \ldots \; \,$ is an infinite sequence of integers satisfying the following two conditions:
+\begin{itemize}
+    \item $\, m-n \,$ divides $\, q_{m}-q_{n}\,$ for $\, m > n \geq 0,$
+    \item there is a polynomial $\, P \,$ such that $\, |q_{n}| < P(n) \,$ for all $\, n$
+\end{itemize}
+
+Prove that there is a polynomial $\, Q \,$ such that $\, q_{n}= Q(n) \,$ for all $\, n$.
+
+\begin{solution}
+    From the problem statement, observe that if $P$ is a degree $d$ polynomial and such a $Q$ exists, it must also be degree at most $d$. Thus, $Q$ must infact be the unique polynomial such that $Q(0)=q_0, \cdots Q(d)=d$. Thus, we take the $Q$ as described above and try to prove that it works!\\
+
+    Now, $Q$ is of the form $\frac{R(x)}{n}$ for some integer polynomial $R$ and $n$ integral. Then, we can multiply all terms of the sequence by $n$ and $P$ by $n$ as well.\\
+    
+    Now, we have $R(x)$ is an integral polynomial. Thus, we have $m-n|R(m)-R(n)$ for all $0\le n<m$. Thus, we get that for all large $k$, we have $lcm(k, k-1, \cdots k-d)|nq_k-R(k)$.\\
+    
+    Now, clearly $nq_k-R(k)$ is also upper bounded by a degree $d$ polynomial. But observe that $lcm(k,\cdots k-d)\ge \frac{k^{d+1}}{d^{d^2}}$ for all large enough $k$ since $d$ is fixed and the lcm is at least the product divided by all pairwise gcds.\\
+
+    Thus, we get that $d^{d^2}|nq_k-R(k)|\ge k^{d+1}$ or $nq_k=R(k)$ for all large enough $k$ but $d^{d^2}|nq_k-R(k)|$ is bounded by a degree $d$ polynomial. Thus, for all large enough $k$, we must have $R(k)=nq_k$ or $Q(k)=q_k$ for all large enough $k$. Let's say that for all $k>K$, we have $q_k=Q(k)$.\\
+
+    Thus, finally we get that when we fix any $t$, we have for all $k>K$, \[k-t|nq_k-nq_t\implies k-t|R(k)-R(t)+R(t)-nq_t\implies k-t|R(t)-nq_t\]
+
+    but we can pick $k$ arbitrarily large, thus we must have $R(t)-nq_t=0$ i.e. for any $t$, we must have $R(t)=nq_t\implies Q(t)=q_t$. Thus, we are done!\\
+
+    \textbf{Remark.} The problem and solution might seem quite complicated at first sight but it boils down to the fact that if $P$ is degree $d$, then we can fix the first $d+1$ values and the divisibility conditions for all numbers are coming from the first $d+1$ terms which gives us that atmost $1$ value would work amongst about $S(n)$ many where $S$ is atleast some $d+1$ degree polynomial. This would tell us that the value is uniquely determined for all large enough $n$. Since the value is unique for all large enough $n$, we can use the polynomial that works for these large values. Using large terms, it is now very easy to recover the small terms as well.
+\end{solution}
+
+\subsection*{Problem 3}
+
+\paragraph*{\textbf{Problem 3. (EGMO 2021)}} Does there exist a nonnegative integer $a$ for which the equation
+\[\left\lfloor\frac{m}{1}\right\rfloor + \left\lfloor\frac{m}{2}\right\rfloor + \left\lfloor\frac{m}{3}\right\rfloor + \cdots + \left\lfloor\frac{m}{m}\right\rfloor = n^2 + a\]has more than one million different solutions $(m, n)$ where $m$ and $n$ are positive integers?
+
+\begin{solution}
+    We first observe that $a\le 2n$ and if we define $g:\NN\mapsto \NN$ such that \[g(m)=\left\lfloor\frac{m}{1}\right\rfloor + \left\lfloor\frac{m}{2}\right\rfloor + \left\lfloor\frac{m}{3}\right\rfloor + \cdots + \left\lfloor\frac{m}{m}\right\rfloor\]
+
+    Let $f(m)$ be a function from naturals to non-negative integers where $f(m)$ is the smallest non-negative integer $a$ such that $g(m)-a$ is a perfect square. This is precisely the kind of $a$ described in the question.\\
+
+    Now, observe that $f(m)\le 2\sqrt{g(m)}$. Thus, $\{g(1),\cdots g(m)\} \subset [2\sqrt{g(m)}]$! Now, some value of $a$ must occur atleast $\frac{2\sqrt{g(m)}}{m}$ many times. Thus, we will be done if we prove that $g(m)=o(m^2)$!\footnote{Try to look up definition of $o(m^2)$ if you don't remember. "little-o notation" }\\
+    
+    This is precisely what you expect since the LHS grows very slowly! In particular $g(m)\le m+2\cdot\frac{m}{2}+4\cdot\frac{m}{4}+\cdots 2^{\lceil \log m \rceil}\cdot\frac{m}{2^{\lceil \log m \rceil}}\le 10m\log m$ which is clearly $o(m^2)$ and we are done!\\
+
+    \textbf{Remark.} I think the solution can be motivated in either direction, that one realizes all they need to conclude is the LHS grows sub quadratically or they realize that since the LHS grows subquadratically, some value of $a$ must repeat often. The key idea is just that the LHS is sub-quadratic and that can essentially all we can use as otherwise the function is quite-unweildly and there is really no way to understand what $a$ will pop up. The function really has nothing to do with squares at all especially since it's roughly $m\log m$, you really can't expect to have the exact difference from a square understood well. The analysis to get that it's actually $m\log m$ is not really the main idea but it something useful to learn how to do. You just need to show that it doesn't grow quadratically. So, you can aim to prove that it's atmost $\frac{m^2}{k}$. One way to do this is to observe that there are $\le m$ terms smaller than $\frac{m}{2k}$ and $2k$ terms at most $m$. In particular, $g(m)\le 2km+\frac{m^2}{2k}$ and if $2k\le \frac{m}{2k}$, you get that $g(m)\le \frac{m^2}{2k}+\frac{m^2}{2k}\le \frac{m^2}{k}$ for all $m\ge 4k^2$ which is also sufficient! Thus, setting $k$ to be something like $10^{15}$ would imply the problem.
+\end{solution}
+
+
+\subsection*{Problem 4}
+\paragraph*{\textbf{Problem 4. (IMO 2021)}} Let $m\ge 2$ be an integer, $A$ a finite set of integers (not necessarily positive) and $B_1,B_2,...,B_m$ subsets of $A$. Suppose that, for every $k=1,2,...,m$, the sum of the elements of $B_k$ is $m^k$. Prove that $A$ contains at least $\dfrac{m}{2}$ elements.
+
+\begin{solution}
+    Observe that using the $B_is$ we can create all multisets which have sums $0,\cdots m^{m+1}-1$ by taking the base $m$ representation of these numbers. Now, observe that each $B_i$ is used at most $m-1$ times. Thus, each element from $A$ is used $0\cdots m^2-m$ times.\\
+
+    These $m^m$ multisets are all distinct and each element of $A$ is used in at most $m^2-m+1$ times! Thus, we have $(m^2-m+1)^{|A|}\ge m^m\implies m^{2|A|}>m^m\implies |A|>\frac{m}{2}$. Thus, we are done!\\
+
+    \textbf{Remark.} The point is just using these $B_i$s very few times, we can get a lot of different multisets. These multisets also cannot use any of the elements of $A$ too often. Thus, $A$ should have lots of elements. The rest is you just see what kind of bound this idea gives and it just works. (This was the P6!)
+\end{solution}
+
+
+\subsection*{Problem 5}
+\paragraph*{\textbf{Problem 5. (ISL 2022 A7/India TST 2023 D1P3)}} For a positive integer $n$ we denote by $s(n)$ the sum of the digits of $n$. Let $P(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ be a polynomial, where $n \geqslant 2$ and $a_i$ is a positive integer for all $0 \leqslant i \leqslant n-1$. Could it be the case that, for all positive integers $k$, $s(k)$ and $s(P(k))$ have the same parity?
+
+\begin{solution}
+    The following solutions-writeup is the same as the file shared with you after TSTs. Remarks added are the very end are new.
+    
+
+\subsubsection*{Solution A} \label{Solution A}
+No, there does not exist such a polynomial. Assume FTSOC that there does. Let $a_n=1$.
+
+\hyt{A}{1} $s(P(k))$ and $\sum\limits_{i=0}^n s(a_i k^i)$ have the same parity for all $k>0$. \\
+\begin{proof} Take a large power of $10$, say $10^m$, such that all $a_i k^i$ have less than $m$ digits. Then there is no carry-over when doing addition, so $s(P(k \cdot 10^m))=\sum\limits_{i=0}^n s(a_i k^i)$, but that has the same parity as $s(k \cdot 10^m)=s(k)$.
+\end{proof}
+
+The idea is to find an appropriate $k$ such that there is exactly one carry-over when the addition in $s(P(k))$ is done. Take a large $t$ such that
+$$10^t > \max \left \{\frac{100^{n-1}a_{n-1}}{(10^{\frac{1}{n-1}}-9^{\frac{1}{n-1}})^{n-1}}, \frac{a_{n-1}}{9}10^{n-1}, \frac{a_{n-1}}{9}(10a_{n-2})^{n-1}, \dots \frac{a_{n-1}}{9}(10a_0)^{n-1} \right \}$$
+From the first quantity mentioned, we get that the interval
+$$I=\left [ \left(\frac{9}{a_{n-1}}10^t \right)^{\frac{1}{n-1}},\left(\frac{1}{a_{n-1}}10^{t+1} \right)^{\frac{1}{n-1}} \right )$$
+contains at least $100$ consecutive positive integers. Let $X$ be an integer in $I$ congruent to $1$ modulo $100$. Since $X \in I$, we have $$9 \cdot 10^t \leq a_{n-1}X^{n-1} < 10^{t+1}$$
+Hence $a_{n-1}X^{n-1}$ has exactly $t+1$ digits, and starts with a $9$.
+
+Next, $a_{n-1} (10a_i)^{n-1} < 9 \cdot 10^t \leq a_{n-1}X^{n-1}$ $\implies$ $10 a_i < X$ for $i \leq n-2$, which implies 
+$$a_iX^i < \frac{X^{i+1}}{10} \leq \frac{a_{n-1}X^{n-1}}{10}<10^t$$
+So $a_iX^i$ has at most $t$ digits, for all $i \leq n-2$.
+
+Take $k=10^tX$. Then $P(k)=10^{tn}X^n+a_{n-1}10^{t(n-1)}X^{n-1}+\cdots +a_0$. For $i \leq n-2$, $a_iX^i$ has at most $t$ digits, so $a_i10^{ti}X^i<10^{t(i+1)}$ has at most $t(i+1)$ digits, while $a_{i+1}10^{t(i+1)}X^{i+1}$ has at least $t(i+1)$ zeros. Thus these terms do not interact and there is no carry-over while adding them.
+
+Finally, $10^{tn+1}>a_{n-1}10^{t(n-1)}X^{n-1} \geq 9 \cdot 10^{tn}$, thus $a_{n-1}10^{t(n-1)}X^{n-1}$ has exactly $tn+1$ digits, with the leading digit being $9$. On the other hand, $10^{tn}X^n$ has exactly $tn$ zeros followed by a $01$ (since $X \equiv 1 \pmod{100}$). Therefore, when we add the terms, the $9$ and $1$ turn into $0$, the $0$ turns into $1$, and nothing else is affected.
+
+Putting everything together, we get
+$$s(P(k))=-9+\sum\limits_{i=0}^n s(a_i k^i)=-9+\sum\limits_{i=0}^n s(a_i X^i)$$
+From the given condition, the LHS has the same parity as $s(k)=s(10^tX)=s(X)$, while by the Claim, the RHS has the same parity as $s(X)-9$, which has a different parity from $s(X)$, contradiction! \qed
+\\
+
+The key idea was ensuring one carry-over happens while calculating $P(k)$. Another approach using this idea is to have $k^n$ end with a $25$ and $a_{n-1}k^{n-1}$ start with a $5$ or more. We can achieve this by taking $k$ to be a large power of $5$ and using irrationality of $\log_{10} 5$.
+
+
+\subsubsection*{Solution B}
+
+The following proof is based on the ideas of Atul Shatavart Nadig in the paper. The proof has been revised and rewritten by the Problem Selection Committee.\\
+
+No, there does not exist such a polynomial. Assume FTSOC that there does.
+
+\hyt{B}{1} Let $a,k$ be positive integers such that $a \leq 10^k-1$. Then $s(a(10^k-1))=9k$.
+\begin{proof}
+    We can assume $a$ is not divisible by $10$; otherwise we work with $\frac{a}{10^m}$ for appropriate $m$ without changing the sum of digits. Note that $a$ has at most $k$ digits. Write $a=\overline{a_{k-1}a_{k-2}\cdots a_1a_0}$ be $a$ written in base $10$ (with some leading $a_i$ possibly $0$); here $a_0 \geq 1$. Then we can write
+    $$a(10^k-1)=\overline{a_{k-1}\cdots a_1 (a_0-1)(9-a_{k-1})(9-a_{k-2})\cdots (9-a_1)(10-a_0)}$$
+    We can check that the sum of digits of the above is $9k$.
+\end{proof}
+
+\hyt{B}{2} Let $c>0$ be fixed. Then $s(cx)$ cannot be constant modulo $2$ for all large $x$.
+\begin{proof}
+    Assume FTSOC that $s(cx) \equiv b \pmod 2$ for all large $x$ where $b$ is a constant. Choose $k$ large such that $c<10^k -1$, and take $x=10^k-1$. Then from \hyr{B}{1}, $s(c(10^k-1))=9k \equiv k \pmod 2$. Hence we get $k \equiv b \pmod 2$ for all large $k$, which is impossible.
+\end{proof}
+
+\hyt{B}{2} Suppose $P_1,P_2, \dots ,P_n$ are non-constant monomials with positive integer coefficients, and $d=\text{deg}(P_1)$. Suppose $d \geq 2$ and $d>\max\{\text{deg}(P_2), \dots \text{deg}(P_n)\}$. Then, for any integer constants $a,b$, the following congruence:
+$$\sum_{i=1}^m s(P_i(k)) \equiv a \cdot s(k)+b \pmod 2$$
+cannot hold for all sufficiently large $k$.
+\begin{proof}
+    Call a collection of monomials satisfying the congruence for all large $k$ and the condition of unique maximum degree as "valid". Call a collection of monomials satisfying the congruence  with $a=0$ for all large $k$ and condition of unique maximum degree as "ultra-valid"; clearly every ultra-valid collection is valid. The maximum degree of such a collection is degree of $P_1$. From \hyr{B}{2}, there are no ultra-valid collections with $\text{deg}(P_1)=1$ (because there will be only one linear monomial by the unique maximum degree condition).
+    
+    Suppose on the contrary, we can find such $P_i$. Choose a valid collection of $P_i$ with the smallest possible maximum degree $d_1=\deg(P_1) \geq 2$. Let $P_i(x)=c_ix^{d_i}$. Choose a large $m$, and put $k=10^my+1$ in the congruence.
+    \begin{align*}
+        s(P_i(10^my+1)) &= s(c_i(10^my+1)^{d_i}) \\
+        &= s\left(\sum_{l=0}^{d_i} c_i 10^{ml} y^l \binom{d_i}{l}\right) \\
+        &= \sum_{l=0}^{d_i} s\left(c_i \binom{d_i}{l} y^l\right) \ \ \dots \text{ no carry-overs if }m \text{ is sufficiently large} \\
+        &= s(P_i(y)) + s(c_i) + \sum_{l=1}^{d_i-1} s\left(c_i \binom{d_i}{l} y^l\right)
+    \end{align*}
+    Adding all these, we get
+    $$\sum_{l=1}^n s(P_i(10^my+1)) = \sum_{l=1}^n s(P_i(y))+\sum_{l=1}^n s(c_i) + \sum_{l=1}^n \sum_{l=1}^{d_i-1} s\left(c_i \binom{d_i}{l} y^l\right)$$
+    If $y$ is sufficiently large, the LHS is congruent to $a \cdot s(10^my+1)+b = a\cdot s(y)+(a+b)$ modulo $2$, and $\sum_{i=1}^n s(P_i(y)) \equiv a \cdot s(y)+b \pmod 2$. Letting $z=\sum_{i=1}^n s(c_i)$, we get
+    $$\sum_{i=1}^n \sum_{l=1}^{d_i-1} s\left(c_i \binom{d_i}{l} y^l\right) \equiv a-z \pmod 2$$
+    for all large $y$. We claim that the collection $c_i \binom{d_i}{l} y^l$ forms an ultra-valid collection. Indeed, it satisfies the congruence for all sufficiently large $y$. Further, the highest degree monomial is $c_1 \binom{d_1}{d_1-1} y^{d_1-1}=c_1d_1y^{d_1-1}$, and it is the only monomial with degree $d_1-1$. If $d_1=2$, then $d_1-1=1$, so we have found an ultra-valid collection with maximum degree $1$, contradiction! Else $d_1>2$, so we have found a valid collection with maximum degree $d_1-1$, contradicting minimality of $d_1$.
+\end{proof}
+
+We return to the original problem. For any $k$, take $m$ large enough so that
+\begin{align*}
+    s(k)-s(a_0)=s(10^mk)-s(a_0) &\equiv s(P(10^mk)) -s(a_0) \pmod 2 \\
+    &= -s(a_0)+s\left(\sum_{i=0}^n a_i 10^{mi} k^i \right) \\
+    &= -s(a_0)+\sum_{i=0}^n s(a_i10^{mi}k^i) \ \ \dots \text{ no carry-overs if }m \text{ is sufficiently large} \\
+    &=\sum_{i=1}^n s(a_ik^i) \\
+    \implies s(k)-s(a_0) &\equiv \sum_{i=1}^n s(a_ik^i) \pmod 2
+\end{align*}
+for all positive integers $k$. However, this is a collection of monomials with a unique maximum degree monomial $x^n$ of degree $n \geq 2$ and positive integer coefficients, so such a congruence cannot hold for all $k$, contradiction! \qed
+
+\textbf{Remark.} The key idea in the first part is not the exact values used to pick $t$ but the idea that if we introduce just $1$ carry over, we will be done. Why we can do that is simply by taking a number of the form $10^{m}y$ of our choice, we can pick $m$ so that there is overlap only in one coordinate between the largest terms. Finally setting $x$ carefully finishes the problem. A lot of the final work in the writeup of the solution is fairly involved and detailed but it's just writing out bounds one after the other but the key idea is pretty short. Solution B, I wouldn't really comment on how to motivate since I have just read the solution when it was given by Atul and hadn't thought of anything like this myself. I don't think it's completely ridiculous but it is probably best to look to Atul himself for his motivation. 
+\end{solution}
+
+\subsection*{Problem 6} 
+
+\paragraph*{\textbf{Problem 6} (ISL 2020)} Let $p$ be an odd prime, and put $N=\frac{1}{4} (p^3 -p) -1.$ The numbers $1,2, \dots, N$ are painted arbitrarily in two colors, red and blue. For any positive integer $n \leqslant N,$ denote $r(n)$ the fraction of integers $\{ 1,2, \dots, n \}$ that are red.
+Prove that there exists a positive integer $a \in \{ 1,2, \dots, p-1\}$ such that $r(n) \neq a/p$ for all $n = 1,2, \dots , N.$
+
+\begin{solution}
+    Observe that we only need to care about the number of red coloured numbers $\le kp$ for $k\in \{1,\cdots \frac{p^2-1}{4}-1\}$.\\
+
+    FTSOC, let's say all ratios, i.e. $\frac{1}{p-1}, \cdots \frac{p-1}{p}$ are achieved for numbers $i_1p, i_2p,\cdots i_{p-1}p$. \\
+
+    Let's also say $i_{\sigma(1)}p<i_{\sigma(2)}p<\cdots i_{\sigma(p-1)}p$ for some permutation $\sigma$ of $[p-1]$.\\
+
+    Now, $1\le i_{\sigma(1)}$. Now, if $\sigma(2)>\sigma(1)$ then $p(i_{\sigma(2)}-i_{\sigma(1)})\ge \sigma(2)i_{\sigma(2)}-\sigma(1)i_{\sigma(1)}\implies (p-\sigma(2))(i_{\sigma(2)})\ge i_{\sigma(1)}(p-\sigma(1))$. Thus, $i_{\sigma(2)}\ge i_{\sigma(1)}\cdot \frac{p-\sigma(1)}{p-\sigma(2)}$.\\
+
+    Now, similarly if $\sigma(2)<\sigma(1)$, then $\sigma(2)i_{\sigma(2)}-\sigma(1)i_{\sigma(1)}\ge 0\implies i_{\sigma(2)}\ge i_{\sigma(1)}\cdot \frac{\sigma(1)}{\sigma(2)}$.
+
+    This isn't just for $1,2$ but for any $k<\ell$.\\
+
+    Thus, we get the inequalities: \[i_{\sigma(\ell)}\ge i_{\sigma(k)}\cdot max\left(\frac{p-\sigma(k)}{p-\sigma(\ell)}, \frac{\sigma(k)}{\sigma(\ell)}\right)\] and \[i_{\sigma(\ell)}\ge i_{\sigma(k)}+|\ell-k|\]
+
+    Now, we can also assume that $i_1<i_{p-1}$, else we could have started with the complementary colouring.\\
+
+    Now, let $i_m>i_{p-1}\implies i_m\ge \frac{p-1}{m}i_{p-1}$. Thus, let $m$ be the smallest number such that $i_m>i_{p-1}$. Thus, $i_1,\cdots i_{m-1}<i_{p-1}$ and $i_{p-1}\cdot \frac{p-1}{m}<\frac{p^2-1}{4}\implies i_{p-1}<\frac{(p+1)m}{4}$\\
+    
+    Now, we first focus on $m\le \frac{p+1}{2}$. Then, we get that $max(i_1,\cdots i_{m-1})\ge m-1$. Now, $i_{p-1}\ge (m-1)\cdot \frac{p-m+1}{1}\ge \frac{m}{2}\frac{p+1}{2}>\frac{(p+1)m}{4}$. This is a contradiction!\\
+    
+    If $m>\frac{(p+1)}{2}$. We have $\{i_1\cdots i_{\frac{p-1}{2}}\}\le i_{p-1}$. Then, we get that $max(i_1,\cdots i_{(p-1)/2})\ge \frac{(p-1)}{2}$ and then $i_{p-1}\ge \frac{(p-1)}{2}\cdot \frac{(p+1)/2}{1}\ge \frac{p^2-1}{4}$. This is again a contradiction!\\
+
+\textbf{Remark.} The problem is basically remarking that to go between different ratios across the entire spectrum, it will require a lot of numbers as going between two different ratios at multiples of $p$ makes the gaps huge. In fact there is a multiplicative gap! But multiplicative gaps like $\frac{p-1}{p-3}$ is only a useful gap when the number being multiplied with is large, there we use the additive factor! i.e. $i_{\sigma(k)}\ge k$. This is basically what the first part of the proof talks about. Now, the second part is how to put these two gaps, multiplicative and additive together to get the desired bound. Now, if too many of the numbers from $1,\cdots (p-1)/2$ have their respective ratio being realized early, then it is a problem as they give huge multiplication factors when going to $p-1$. Similarly, if many of them are not here, then there is some small number after $p-1$ which will also give a relatively large multiplicative gap! Putting these two ideas with some \textit{standard} extremal bounding type ideas thrown in let us complete the problem. The whole $i_{\sigma(k)}$ and $i_{\sigma(\ell)}$ bounds are to just figure out what multiplicative factors we have. You can try writing out on your own as well, it will end up being much cleaner than I seem to have written it as. If this proof is unclear due to it's messiness, please remind me and I'll rewrite a cleaner proof.
+
+The first part of this problem i.e. before the last $3$ paragraphs essentially boils down to figuring out what kinds of 
+\end{solution}
+
+
+\end{document}
