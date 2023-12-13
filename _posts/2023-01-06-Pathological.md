@@ -12,3 +12,4 @@ The idea here is sometimes you will not be able to prove as good as bounds as yo
 A certain problem from your IMO TSTs might fit this bill :D
 
 - PSet [**pdf**](pdfs\pathological\pset.pdf)      [**tex**](pdfs\pathological\pset.tex)
+- PSet [**pdf**](pdfs\pathological\pset-soln.pdf)      [**tex**](pdfs\pathological\pset-soln.tex)

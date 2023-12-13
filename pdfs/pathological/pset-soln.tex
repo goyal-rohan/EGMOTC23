@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+
+\title{Pathological PSet}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\textbf{Problem 1.} (Memories!) Let $k$ be a positive integer. Lexi has a dictionary $\mathbb{D}$ consisting of some $k$-letter strings containing only the letters $A$ and $B$. Lexi would like to write either the letter $A$ or the letter $B$ in each cell of a $k \times k$ grid so that each column contains a string from $\mathbb{D}$ when read from top-to-bottom and each row contains a string from $\mathbb{D}$ when read from left-to-right.
+What is the smallest integer $m$ such that if $\mathbb{D}$ contains at least $m$ different strings, then Lexi can fill her grid in this manner, no matter what strings are in $\mathbb{D}$?\\
+
+\textbf{Problem 2.} Each cell of a $100\times 100$ grid is colored with one of $101$ colors. A cell is diverse if, among the $199$ cells in its row or column, every color appears at least once. Determine the maximum possible number of diverse cells.\\
+
+\textbf{Problem 3.} Find all positive integers $k<202$ for which there exist a positive integers $n$ such that
+\[\bigg {\{}\frac{n}{202}\bigg {\}}+\bigg {\{}\frac{2n}{202}\bigg {\}}+\cdots +\bigg {\{}\frac{kn}{202}\bigg {\}}=\frac{k}{2}\]
+
+\eject
+
+\section*{Solutions}
+
+\subsection*{Problem 1.}
+
+\paragraph*{\textbf{Problem 1. (EGMO 2023!)}} Let $k$ be a positive integer. Lexi has a dictionary $\mathbb{D}$ consisting of some $k$-letter strings containing only the letters $A$ and $B$. Lexi would like to write either the letter $A$ or the letter $B$ in each cell of a $k \times k$ grid so that each column contains a string from $\mathbb{D}$ when read from top-to-bottom and each row contains a string from $\mathbb{D}$ when read from left-to-right.
+What is the smallest integer $m$ such that if $\mathbb{D}$ contains at least $m$ different strings, then Lexi can fill her grid in this manner, no matter what strings are in $\mathbb{D}$?\\
+
+\begin{solution}
+    Official Solution has a pretty good writeup for this problem: \href{https://www.egmo.org/egmos/egmo12/solutions.pdf}{Official Solution}\\
+
+    \textbf{Remark.} I felt that proving the bound here was easier with all strings starting from the same letter and the construction harder but it does seem to be well motivated from trying small cases. The final gap of $1$ in the bounds is not so hard to fix as well with all As and all Bs being bad for straightforward reasons. 
+
+    In this problem unlike the two others, one kind of expects the bound to be tight and some idea to exist but it turns out to be significantly sillier than one would think it to be with complementary strings just fitting perfectly!
+\end{solution}
+
+\subsection*{Problem 2.}
+
+\paragraph*{\textbf{Problem 2. (ELMO 2021!)}} Each cell of a $100\times 100$ grid is colored with one of $101$ colors. A cell is diverse if, among the $199$ cells in its row or column, every color appears at least once. Determine the maximum possible number of diverse cells.\\
+
+\begin{solution}
+    This one is just quite hard and it's very tricky to expect that $9996$ works. It is the kind of thing that even happens with the TST3P3 since you get some construction and lower bound but you don't really expect anything better to work. Here that bound is $9900$ and it's incredible to believe that a better bound exists. Once the belief of better things exists, it's not actually not that crazy to find especially with some work on $6\times 6$ or $8\times 8$ grid. I had almost no progress when I tried this myself, just the $9900$ part. Anyway, good solutions can be found at:
+    \begin{itemize}
+        \item \href{https://artofproblemsolving.com/community/c6h2600391p22438297}{CANBANKAN's solution}
+        \item \href{https://artofproblemsolving.com/community/c6h2600391p22438595}{Official solution}
+    \end{itemize}
+\end{solution}
+
+\subsection*{Problem 3.}
+
+\paragraph*{\textbf{Problem 3. (APMO 2022/3)}} Find all positive integers $k<202$ for which there exist a positive integers $n$ such that
+\[\bigg {\{}\frac{n}{202}\bigg {\}}+\bigg {\{}\frac{2n}{202}\bigg {\}}+\cdots +\bigg {\{}\frac{kn}{202}\bigg {\}}=\frac{k}{2}\]
+\begin{solution}
+    I am sure some of you would have seen this problem/it's solution before. Anyway, the official solution for this is written well enough too: \href{https://www.apmo-official.org/static/solutions/apmo2022_sol.pdf}{Official solution}.\\
+
+    \textbf{Remark.} The main difficulty of this problem again lies in believing that $101$ works. The rest is mostly standard and one can do it with enough experience. This is clear even when you look at India's performance. Only Pranjal observed that $101$ works and was the only one to get a full solve while many others ended with a $7-$. Even overall, there were more $5$s than $7$s!
+\end{solution}
+\end{document}
