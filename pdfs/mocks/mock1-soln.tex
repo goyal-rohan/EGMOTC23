@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{TST Mock 1 Solutions}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\paragraph{\textbf{Problem 1.}} A point $P$ lies in $\triangle ABC$. The lines $BP,CP$ meet $AC,AB$ at $Q,R$ respectively. Given that $AR=RB=CP, CQ=PQ$, find $\angle BRC$. %Japan 2003/1
+
+\begin{solution}
+    We let $\Delta ARC$ be the reference triangle and try to understand the given conditions with respect to this triangle. Now, $B$ is simply the reflection of $A$ in $R$ and \[CP=PQ\iff \angle QCP=\angle QPC\iff \angle ACR=\angle RPB\]
+    Thus, we have eliminated $Q$ from the problem conditions and reduced to angle condition on the remaining vertices.\\
+    
+    Now, we can try to remove $B$ as well since having an angle condition on it is slightly strange. To do this, we can simply reflect the angle condition over $R$. Thus, let $P'$ be the reflection of $P$ over $R$.\\
+
+    Now, we must have $\angle AP'C=\angle ACP'$ as the only angle condition. The length condition is still $CP=AR$.\\
+
+    Thus, in isosceles triangle $AP'C$, we have a point $R$ on $CP'$ such that \[AR+2P'R=CP'\] To make this slightly simpler, we can take midpoint of $CP'$ as $X$. Now, the condition is in right angled triangle $AXC$, $R$ lies on $XC$ such that $RX=\frac{AR}{2}$. Thus, $\boxed{\angle ARX=60^{\circ}}\implies $ 
+    \[\angle BRC = 120^{\circ}\]
+
+    \textbf{Remark.} The above solution is basically a reflection of how I approached the problem and what I tried to do. Removing one condition at a time and just trying to rephrase the problem in simpler and simpler terms.
+\end{solution}
+
+
+
+\paragraph{\textbf{Problem 2. (MPFG Olympiad 2023)}} The two cats Fitz and Will play the following game. On a blackboard is written the expression
+\[ 
+  x^{100} + {\square} x^{99} + {\square} x^{98} + {\square} x^{97} + \dots + {\square } x^2 + {\square} x +1. 
+\]Both cats take alternate turns replacing one $\square$ with a $0$ or $1$, with Fitz going first, until (after 99 turns) all the blanks have been filled. If the resulting polynomial obtained has a real root, then Will wins, otherwise Fitz wins. Determine, with proof, which player has a winning strategy.
+
+\begin{solution}
+    The answer is that Will cannot guarantee a win. Fitz performs the following strategy: if she goes first, she starts by making the coefficient of $x$ zero; if not, she ignores this step. Then she pairs off the coefficients of $x^{2k+1}$ and $x^{2k}$ for $k=1,\ldots, 49$. Whenever Will replaces the $\ast$ on some element of a pair that's not been modified so far, Fitz replaces the $\ast$ in the other element of the pair with the same coefficient to ensure the pair is of the form $0\cdot x^{2k+1}+0\cdot x^{2k}$ or $1\cdot x^{2k+1}+1\cdot x^{2k}$. If Will's last move was not in an unmodified pair, she simply picks such a pair and makes the coefficient of $x^{2k+1}$ zero.\\
+
+    It is easy to see that at the end of the game, the polynomial would consist only of the terms $x^{100}$, $1$, $x^{2k+1}+x^{2k}$ for some $k$'s in the appropriate range, possibly $x^{2\ell}$ for some $\ell$'s and possibly $x$. We claim that any such polynomial takes strictly positive values for all real $x$.\\
+
+    Since $x^{2\ell}$ is always non-negative, we can assume such terms do not occur. Thus we want to prove that the polynomial$$x^{100}+(x+1)(x^{2k_1}+x^{2k_2}+\ldots+x^{2k_r})+\epsilon x+1$$is strictly positive where $\epsilon\in \{0,1\}$, and $49\ge k_1>k_2>\cdots> k_r>0$ are integers. Now there are two cases:
+    \begin{itemize}
+        \item Suppose $\epsilon=1$, so that the polynomial is$$p(x)=x^{100}+(x+1)(x^{2k_1}+x^{2k_2}+\ldots+x^{2k_r}+1).$$This is clearly positive for $x\ge 0$, so it is enough to show that$$p(-x)=x^{100}+(1-x)(x^{2k_1}+x^{2k_2}+\ldots+x^{2k_r}+1)$$is positive for $x>0$. Again, for $x\le 1$, this is obvious. For $x>1$, we see that$$p(-x)=(x^{100}-x^{2k_1+1})+(x^{2k_1}-x^{2k_2+1})+\cdots+(x^{2k_r}-x)+1.$$Here every term within parentheses is positive for $x>1$, and so the claim is true.
+        \item Suppose $\epsilon=0$. Then$$p(x)=x^{100}+(x+1)(x^{2k_1}+x^{2k_2}+\ldots+x^{2k_r})+1.$$As before, it is enough to prove$$p(-x)=x^{100}+(1-x)(x^{2k_1}+x^{2k_2}+\ldots+x^{2k_r})+1$$is positive. This is obvious for $x\le 1$, and for $x>1$ we see that$$p(-x)=(x^{100}-x^{2k_1+1})+(x^{2k_1}-x^{2k_2+1})+\cdots+(x^{2k_r}-x)+x+1$$is clearly positive as well.
+    \end{itemize}
+
+Thus at the end of the game, the polynomial cannot have a real root, as claimed.\\
+
+\textit{Anant's remark.} The deuteragonists Fitz and Will are chosen from the Cambridge Cats series :D. See \href{https://www.alumni.cam.ac.uk/file/fitz-and-will-the-cambridge-cats}{here} or \href{http://www.fitzandwill.com/fitz-and-will/}{here}.\\
+
+\textbf{Remark.} The above solution is Anant, Sutanay and Sahil's writeup. They were the ones who wrote this problem.
+\end{solution}
+
+\paragraph{\textbf{Problem 3.}} We call a natural number $n$ honourable, if when a single corner cell is removed from an $n \times n$ grid, there are an odd number of ways of tiling the remaining cells using L-trominoes. Prove that a number is honourable if and only if it is a power of $2$
+
+\begin{solution}
+    (The current writeup is without pictures, I will soon upload a handwritten writeup for the same problem as well where I might be able to add in some pictures.)\\
+
+    Let the grid be indexed with cells $(i,j)$ where $(1,1)$ is the bottom left corner. We call a square of side $n$, $S_n$. Let $f(P)$ be the number of ways of tiling the polygon $P$ with $L$ trominoes. We also only talk about the problem statement for $n\ge 3$. If $n=2$, it is clear that there is exactly one possible tiling.\\
+
+    Let the removed cell be the bottom right cell. Now, consider the reflection of every tiling along the long diagonal. This gives us a pairing of tilings. Thus, the parity of the number of total tilings is the same as the number of symmetric tilings about this diagonal. \\
+
+    The number of tilings which are symmetric about this diagonal are same as the number of tilings of the grid $T_{n-2}=\{(i,j)|i+j<n\}$(a triangle with base of $n-2$ squares).\\
+        \[f(S_n)\equiv f(T_{n-2})\pmod{2}\]
+    Now, consider the diagonal through $(1,1)$ and consider reflections of tilings about it. Thus, the parity of the tilings of $T_{n-2}$ is the same as tilings symmetric about this diagonal.\\
+
+    Now, we break into two cases: $n-2$ is even and $n-2$ is odd.
+
+    \begin{itemize}
+        \item If $n-2$ is odd, there is no symmetric tiling across the diagonal as all base vertices of the tromino will have to be along the diagonal and there have to be as many things above the diagonal as on the diagonal! This is not possible.
+        \item if $n-2$ is even, then the parity of symmetric tilings of $T_{n-2}$ is the same as the number of tilings of the grid $\{(i,j)|(i,j)\in T_{n-2}, i>j+1\}$.\\
+              Now, since $n-2$ is even, this component looks like $T_{\frac{n}{2}-2}$ joined to its own reflection across one of the sides. Now, reflecting across, this side, we get that the parity of the number of tilings of $T_{n-2}$ is the same as that of $T_{\frac{n}{2}-2}$!
+        For standardness, we say that $T_0$ has exactly one tiling, the empty tiling.
+    \end{itemize}
+
+    Thus, we get that if $n$ is not a power of two: \[f(S_n)\equiv T_{n-2}\equiv T_{\frac{n}{2}-2}\equiv \cdots T_{\frac{n}{2^k}-2} \cdots T_{odd}\equiv 0 \pmod{2}\]
+    And if $n$ is a power of $2$: \[f(S_n)\equiv T_{n-2}\equiv T_{\frac{n}{2}-2}\equiv \cdots T_{\frac{n}{2^k}-2} \cdots T_{0}\equiv 1 \pmod{2}\]
+    And thus we are done!\\
+
+    \textbf{Remark.} This idea of pairing things to count parity is fairly common especially using reflections and elementary symmetries. This was also essentially all you needed for EGMO 2022/5. I think this one is slightly harder than that as you have to do the reflections on a different structure especially when you get a third structure as well, you have to just continue. But if you are just slightly brave with reflections, this problem does work out fairly well.
+\end{solution}
+
+\end{document}
