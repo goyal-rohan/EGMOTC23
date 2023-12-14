@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand*{\FF}{\mathbb{F}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{TST Mock 2 Solutions}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{1cm}
+\thispagestyle{empty}
+
+\paragraph{\textbf{Problem 1. (ISI Entrance 2021)}} There are three cities each of which has exactly the same number of citizens, say $n$. Every citizen in each city has exactly a total of $(n+1)$ friends in the other two cities. Show that there exist three people, one from each city, such that they are friends. We assume that friendship is mutual (that is, a symmetric relation).
+
+\begin{solution}
+    For each person, we define $d_A, d_B, d_C$ as the degrees to the three cities. (We know that $d_A+d_B+d_C=n+1$ for everyone and we assume nobody has friends in the same city as themself.) Now, pick the citizen $c$ such that $d_i$ is maximized. WLOG, this citizen is in city $A$ and $i=B$. Now, consider any neighbour $u$ of $c$ in city $C$ (exists since $d_B\le n$). Now, if $u$ has $>n-d_B$ neighbours in city $B$, then we get a $3$-cycle as desired. Else, $u$ has at most $n-d_B$ neighbours in city $B$ so atleast $d_B+1$ neighbours in city $A$! This is a contradiction to the maximality of $d_B$! Thus, we are done!\\
+    
+    \textbf{Remark.} This one is quite tricky and clever for P1. One can do this argument also by repeatedly finding higher and higher degree vertices of this sort. It is kind of normal to take such an extremal citizen and argue as well. It was especially surprising that such a nice problem came on an entrance exam.
+\end{solution}
+
+\paragraph{\textbf{Problem 2.}} Find all real numbers $x_1, \dots, x_{2024}$ that satisfy the following equation for each $1 \le i \le 2024$. (Here $x_{2025} = x_1$.)
+\[ x_i^2 + x_i - 1 = x_{i+1} \]
+\begin{solution}
+    We have $2024$ equations. We write these as \[x_i(x_i+1)=x_{i+1}+1\]
+    Summing over all $2024$, we get that $\sum x_i^2=2024$.
+
+    Multiplying over all equations, we get that either some $x_i=-1$ or $\prod\limits_{i=1}^{2024} x_i=1$. If some $x_i=-1$ then all are $-1$ so this is valid.\\
+
+    Else, we have $\sum x_i^2=2024$ and $\prod x_i^2=1$. Then, by AM-GM inequality this happens iff $x_i^2=1$ for all $i$. But as soon as $x_i=1$ for any $i$, all are $1$. Similarly if $x_i=-1$ for any $i$, all are $-1$. Thus, the only two solutions are all $+1$ or all $-1$.\\
+
+    \textbf{Remark.} Finding a nice relation and symmetrizing it by taking sum or product over all the equations is quite standard and useful in general when dealing with such systems. Plug and chug might not work cause things get increasingly complicated. It's also important to be careful of the pointwise trap here. You cannot simply remark that since all $x_i^2=1$, all should be $+1$ or all should be $-1$. You have to say that each number is either $+1$ or $-1$ and if any number is $+1$ then so are all the others because of the original relation. Similarly for $-1$.
+\end{solution}
+
+
+\paragraph{\textbf{Problem 3. (MPFG Olympiad )}} Let $m$ be the product of the first 100 primes, and let $S$ denote the set of divisors of $m$ greater than 1 (hence $S$ has exactly $2^{100} - 1$ elements). We wish to color each element of $S$ with one of $k$ colors such that
+\begin{itemize}
+    \item every color is used at least once; and
+    \item any three elements of $S$ whose product is a perfect square have exactly two different colors used among them.
+\end{itemize}
+Find, with proof, all values of $k$ for which this coloring is possible.
+\begin{solution}
+    We show that only $k=100$ is possible.
+
+    To prove this, we begin with the following setup:
+
+    We denote every element of $S$ by a vector in $\FF_2^{100}$ where $i$th position is $1$ if $p_i$ divides the element and $0$ otherwise. Thus, we can now work over $\FF_2^{100}\setminus \{{\bf 0}\}$\\
+
+    Now, observe that the given condition is the following:
+
+    \begin{itemize}
+        \item Each colour is used atleast once to colour some element of $\FF_2^{100}\setminus \{{\bf 0}\}$.
+        \item $a+b+c={\bf 0}$ implies that exactly $2$ colours are used amongst $\{a,b,c\}$. (here addition is coordinate wise and $\pmod 2$)
+    \end{itemize}
+    Now, consider $a,b,c$ that have the same colour. Now, we will show that $a+b+c$ has the same colour as them. FTSOC, assume not. Now, $c+(a+b)+(a+b+c)=0$. Thus, $(a+b)$ has the same colour as $(a+b+c)$. Similarly, $(a+c)$ and $(b+c)$ have the same colour as well!
+    But, $(a+b)+(a+c)+(b+c)=0$ so all of them cannot have the same colour!\\
+    
+    Thus, $a,b,c$ have the same colour implies that so does $a+b+c$! In particular, this implies that elements of every colour have a linear structure on them!\\
+
+    Let the colours be $C_1,\cdots C_m$. First, we will show that $|C_i|$ i.e. number of colours coloured with colour $i$ is a power of $2$.\\
+
+    To show this, observe that if $|C_i|\not\in \{1,2\}$ then, let $a\in C_i$ and let $U=\{u|u+a\in C_i\}$. Now, observe that $u_1,u_2\in U\implies u_1+a, u_2+a$ and $a$ have the same colour. Thus, $u_1+u_2+a\in C_i\implies u_1+u_2\in U$. Thus, $U$ is a linear space! We know that all linear spaces over $U$ have size as power of $2$! (You can verify this or ask me for a proof separately.)\\
+
+    Now, we also claim that $|C_i|\ne |C_j|$ for any $i\ne j$. If we prove this, we have that $2^{100}-1=\sum_{i=1}^{m}|C_m|$ but since these are distinct powers of $2$, we must have all from $2^0$ to $2^99$ giving us $100$ colours. One possible colouring is: colour all $100$ primes with different colours. Colour each divisor with the colour of the largest prime dividing it.
+
+    Now, to prove $|C_i|\ne |C_j|$. We know $C_i$ is of the form $a+U$ where $U$ is some linear space. $C_j$ is of the form $b+V$ where $V$ is also a linear space. Now, we have that elements of the form $a+U+b+V$ lie in either $C_i$ or $C_j$. Now, if $\exists v\in V$ such that $b+v\not\in U$, then for all $u\in U$, we have $a+u+b+v\in C_j\implies a+u\in V$ for all $u\in U$. In particular, $a+U\subset V$. But, then $a\not\in U\implies |V|>|U|$. This is a contradiction! Else, we have $b+V\subset U$ which is a contradiction again because $|b+V|=|U|$ but $0\not\in b+V$!
+    
+    Thus, we are done!\\
+
+    \textbf{Remark.} This problem on the face of it might have fooled you into thinking it is number theory but it is just an exercise in linear algebra. The entire proof can be summed up as the following:\\
+
+    "The elements of each colour form an affine space. If two classes are $a+U, b+V$ then either $a+U\subset V$ or $b+V\subset U$. In particular, all spaces have unequal dimension. Thus, the size of the colour classes are distinct powers of $2$, thus there must be exactly $100$ different colours used."\\
+    
+    Coming up with this proof without any idea of linear algebra would be distinctly impressive and very very difficult. I hope you learnt and took away some new ideas from this problem and are somewhat comfortable working with linear spaces over $\FF_2$ now.
+\end{solution}
+
+\end{document}
