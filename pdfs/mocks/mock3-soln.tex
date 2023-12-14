@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand*{\FF}{\mathbb{F}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+
+\title{TST Mock 3}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\section*{Problems}
+\vspace{0cm}
+\thispagestyle{empty}
+
+\paragraph{\textbf{Problem 1. (Old Canada/1)}} Read the following conversation between Rachel and Randy.\\ %Canada 2001
+
+\textit{Randy}: Hi Rachel, that's an interesting quadratic equation you have written down. What are its roots?\\
+\textit{Rachel}: The roots are two positive integers. One of the roots is my age, and the other root is the age of my younger brother, Jimmy.\\
+\textit{Randy}: That is very neat! Let me see if I can figure out how old you and Jimmy are. That shouldn't be too difficult since all of your coefficients are integers. By the way, I notice that the sum of the three coefficients is a prime number.\\
+\textit{Rachel}: Interesting. Now figure out how old I am.\\
+\textit{Randy}: Instead, I will guess your age and substitute it for $x$ in your quadratic equation $\dots$ darn, that gives me $-55$, and not $0$.\\
+\textit{Rachel}: Oh, leave me alone!
+
+\begin{enumerate}
+    \item Prove that Jimmy is two years old.
+    \item Determine Rachel's age.
+\end{enumerate}
+
+\begin{solution}
+    The quadratic equation is of the form $a(x-j)(x-r)$ where $a$ is some integer, $j$ is Jimmy's age and $r$ is Rachel's age. Now, we are given that the sum of coefficients is a prime! This means that the polynomial evaluated at $1$ is a prime. Thus, $a(j-1)(r-1)$ is prime. Since, $r>2$ and $j$ is positive, this means that $j=2$ and since primes are positive, we get $a=1$.\\
+
+    Thus, we have the quadratic equation as $(x-2)(x-r)$ where $r$ is Rachel's age. We have also proven that Jimmy is $2$. Now, we are told that there is an integer such that $(x-2)(x-r)=-55$ for some positive integer $x$. Thus, $2<x<r$. Now, if $x=3$, then $r=58$. Similarly, if $r-x=1$, then $r=58$. But then, $r-1=57$ which is not a prime. Thus, we get that either $x-2=5$ or $x-2=11$. Thus, $r=18$ and indeed $r-1=17$ is prime.
+\end{solution}
+
+\paragraph{\textbf{Problem 2. (USAJMO 2023/5)}} A positive integer $a$ is selected, and some positive integers are written on a board. Alice and Bob play the following game. On Alice's turn, she must replace some integer $n$ on the board with $n+a$, and on Bob's turn he must replace some even integer $n$ on the board with $n/2$. Alice goes first and they alternate turns. If on his turn Bob has no valid moves, the game ends.\\
+
+After analyzing the integers on the board, Bob realizes that, regardless of what moves Alice makes, he will be able to force the game to end eventually. Show that, in fact, for this value of $a$ and these integers on the board, the game is guaranteed to end regardless of Alice's or Bob's moves.
+
+\begin{solution}
+    Let $k=\nu_2(a)$. Now, observe that if $\nu_2(n)$ for any number $n$ on the board is eventually $<k$, the $\nu_2()$ keeps decreasing for that number and Bob will eventually not be able to make moves on that number. Thus, if all numbers have $\nu_2(n)<k$, then the game will always end.\\
+
+    Now, if there is atmost $1$ number written on the board then the moves are anyway forced so if Bob can force game ending, it always ends. Thus, we only care when there is atleast one number with $\nu_2(n)\ge k$ initially.\\
+
+    Now, we show that in this situation, Alice can force the game to never end. Let two of the numbers on the board be $(n_1,n_2)$ with $\nu_2(n_1)\ge k$. In her move, if $\nu_2(n_1)=k$, then she replaces it with $n_1+a$. This increases the exponent of $2$ in $n_1$ and Bob will always have the option to divide it by $2$. If $\nu_2(n_1)>k$ then she just moves on $n_2$ i.e. $n_2\mapsto n_2+a$.\\ 
+
+    Thus, if there is atleast one number with $\nu_2\ge k$, she can ensure that on Bob's move, that $\nu_2$ of that number is atleast $k+1$. Thus, Bob will always have a move and she wins!\\
+
+    \textbf{Remark.} I think this problem can be done in either direction and it is not surprising to see either way of thinking about it. The key observation is that the only relevant piece of information is the $\nu_2()s$.
+\end{solution}
+
+\paragraph{\textbf{Problem 3.}} The incircle $\omega$ of a triangle $ABC$ touches the sides $AC$ and $BA$ at $E$ and $F$ respectively. $N$ is the midpoint of arc $BAC$ and $P$ is the foot of altitude from the midpoint of $BC$ onto $EF$. Prove that the line $NP$ passes through the centre of $\omega$.
+
+\begin{solution}
+    Let $S$ be the midpoint of arc $BC$ not containing $A$, $M$ be the midpoint of $BC$ and $P'=EF\cap IN$ where $I$ is the incenter of $\Delta ABC$ and finally, let $X$ be the midpoint of $EF$. Now, we just want that $P'M\perp EF$ or equivalently, $SI\parallel MP'$. In $\Delta NIS$, this is equivalent to proving \[\frac{IP'}{IN}=\frac{SM}{SN}\]
+    But, we have $\frac{IP'}{IN}=\frac{IX}{IA}$ since $P'X=EF\parallel AN$.\\
+    
+    Thus, we just want that \[\frac{IX}{IA}=\frac{SM}{SN}\] but observe that $AFIE\sim NBSC$ and the result follows!\\
+
+    \textbf{Remark.} This problem is simply about defining the points cleanly and completing the figure, points $I$ and $S$ have been hidden from you and as soon as you add them in, things become much clearer!
+\end{solution}
+
+\end{document}
