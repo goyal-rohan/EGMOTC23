@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{Inequalities}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\thispagestyle{empty}
+
+If you are done with the uploaded pset, try the following problems (Main goal is to try P1, the rest are there since you all don't have many other inequality practice problems and you want to practice, but you can ignore the rest.):
+
+\subsection*{Problem 1}
+\paragraph*{ISL 2019:} Let $u_1, u_2, \dots, u_{2023}$ be real numbers satisfying\[u_{1}+u_{2}+\cdots+u_{2023}=0 \quad \text { and } \quad u_{1}^{2}+u_{2}^{2}+\cdots+u_{2023}^{2}=1.\]Let $a=\min \left(u_{1}, u_{2}, \ldots, u_{2023}\right)$ and $b=\max \left(u_{1}, u_{2}, \ldots, u_{2023}\right)$. Prove that
+\[
+ab \leqslant-\frac{1}{2023}.
+\]
+
+\subsection*{Problem 2}
+\paragraph*{ISL 2019:} Let $n\geqslant 2$ be a positive integer and $a_1,a_2, \ldots ,a_n$ be real numbers such that\[a_1+a_2+\dots+a_n=0.\]Define the set $A$ by
+\[A=\left\{(i, j)\,|\,1 \leqslant i<j \leqslant n,\left|a_{i}-a_{j}\right| \geqslant 1\right\}\]Prove that, if $A$ is not empty, then
+\[\sum_{(i, j) \in A} a_{i} a_{j}<0.\]
+
+\subsection*{Problem 3}
+\paragraph*{ISL 2022:} Let $n \geqslant 3$ be an integer, and let $x_1,x_2,\ldots,x_n$ be real numbers in the interval $[0,1]$. Let $s=x_1+x_2+\ldots+x_n$, and assume that $s \geqslant 3$. Prove that there exist integers $i$ and $j$ with $1 \leqslant i<j \leqslant n$ such that\[2^{j-i}x_ix_j>2^{s-3}.\]
+
+\end{document}

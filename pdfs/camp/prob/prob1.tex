@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{Probabilistic Method Lecture 1}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\newtheorem{definition}{Definition}
+
+\thispagestyle{empty}
+
+\section*{Markov's inequality and beyond!}
+
+\paragraph{$\pm 1$ on the number line}
+
+For this section, we will restrict our attention to a \textit{random walk} on the integers. We start at $x=0$ and in each move, we move forward or backward each with probability $\frac{1}{2}$. Now, we expect that it should be unlikely that after $n$ steps that we are too far from $0$ (the expected value). In this section, we will try to find some bounds for the same.\\
+
+We will now write the setup a little more formally: let $X_1=X_2=\cdots $ be independent identically distributed random variables taking value $\pm 1$ with probability $1/2$ each. Now, $S_n=X_1+X_2+\cdots X_n$ and we would like to understand the values of $S_n$.
+
+\begin{definition}
+    The Var($X$) or the variance of a random variable $X$ is defined as $\EE[X^2]-\EE[X]^2=\EE[(X-\EE[X])^2]$.
+\end{definition}
+Now, prove the following:
+\begin{itemize}
+    \item \textbf{(Markov's Inequality)} Prove that for any non-negative r.v. $X$, we have $\PP[X\ge a]\le \frac{\EE[X]}{a}$.
+    \item \textbf{(Chebyshev's Inequality)} Prove that for any $a>0$, we have $\PP[|X-\EE[X]|\ge a]\le \frac{Var(X)}{a^2}$
+    \item \textbf{(Random Walk $1$)}: Prove that for the random variable $S_n$ described before, we have that $\PP[|S_n|>2\sqrt{n}]<\frac{1}{2}$
+    \item \textbf{(Chernoff Bound)}: Prove that for $0\le k \le \sqrt{n}$, we have: \[\PP[|S_n|\ge k\sqrt{n}]\le 2e^{-\frac{k^2}{2}}\]
+    \item \textbf{(Binomial Coefficients)}: As a consequence of the above, prove that \[\frac{\sum\limits_{i=0}^{\frac{n}{2}-\frac{k\sqrt{n}}{2}} \binom{n}{i}}{2^n}\le e^{\frac{-k^2}{2}}\]
+\end{itemize}
+
+To provide context on these bounds: Chebyshev's inequality will tell you that $\PP[|S_n|\ge 10\sqrt{n}]\le 0.01$ but Chernoff will tell you, it is $\le 2\cdot e^{-50}\sim 3.9\cdot 10^{-22}$.
+
+\section*{An Olympiad problem:}
+
+\paragraph*{A problem from the USAMO:} 
+For integer $n\geq2$, let $x_1, x_2, \ldots, x_n$ be real numbers satisfying\[x_1+x_2+\ldots+x_n=0, \qquad \text{and}\qquad x_1^2+x_2^2+\ldots+x_n^2=1.\]For each subset $A\subseteq\{1, 2, \ldots, n\}$, define\[S_A=\sum_{i\in A}x_i.\](If $A$ is the empty set, then $S_A=0$.)
+
+Prove that for any positive number $\lambda$, the number of sets $A$ satisfying $S_A\geq\lambda$ is at most $2^{n-3}/\lambda^2$. For which choices of $x_1, x_2, \ldots, x_n, \lambda$ does equality hold?
+
+\eject
+
+
+\section*{Hints:}
+
+For more details, check the solution document.
+
+\begin{itemize}
+    \item Markov: Write down both the sides and compare.
+    \item Chebyshev: Apply Markov to $Y=|X-\EE[X]|^2$.
+    \item Apply Chebyshev
+    \item Discuss in class
+    \item Apply Chernoff
+    \item \textbf{(USAMO)}: Apply Chebyshev
+\end{itemize}
+
+\end{document}

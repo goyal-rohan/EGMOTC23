@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{Probabilistic Method Lecture 2}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\thispagestyle{empty}
+
+\section*{Erd\"{o}s-Ko-Rado}
+
+\paragraph{\textbf{Intersecting Set-families}}: A family $\mathcal{F}$ of sets is called intersecting if, $A,B\in \mathcal{F}\implies A\cap B\ne \Phi$. Now, suppose $n\ge 2k$ and let $\mathcal{F}$ be an intersecting family of $k$-element subsets of an $n$ set, say $[0,1,2,\cdots n-1]$. Then, Erd\"{o}s-Ko-Rado Theorem states that $|\mathcal{F}|\le \binom{n-1}{k-1}$. \footnote{Taken from the probabilistic lens 1 in Alon-Spencer.}
+
+\section*{Maximal Antichains}
+
+\paragraph*{Antichains:} A family $\mathcal{F}$ of subsets of $[n]$ is called an anti-chain if no set of $\mathcal{P}$ is contained in another. 
+
+\begin{theorem}
+    Let $\mathcal{F}$ be an antichain then, \[\sum_{A\in \mathcal{F}}\frac{1}{\binom{n}{|A|}}\le 1\]
+\end{theorem}
+
+The above theorem is also called the Lubell–Yamamoto–Meshalkin inequality or more frequently, the LYM inequality.
+
+\begin{corollary} \textbf{(Sperner's Theorem)} Let $\mathcal{F}$ be an antichain, then 
+    \[|\mathcal{F}|\le \binom{n}{\lfloor n/2 \rfloor}\]
+\end{corollary}
+
+Try to prove these three results.
+\eject
+\section*{Law of Large Numbers}
+
+Take this result as something to remember intuitively and not necessarily too formally but more as an intuitive statement:
+
+\paragraph*{\textbf{Law of Large Numbers.}} Let $X_1,\cdots X_n$ be indepedent identically distributed random values with expected value $0$. Then, if you define $\overline{X_n}=\frac{X_1+\cdots X_n}{n}$ then for any $\epsilon>0$, we have \[\lim_{n\mapsto \infty} \PP[|\overline{X_n}|<\epsilon]=1\]
+
+
+\end{document}
