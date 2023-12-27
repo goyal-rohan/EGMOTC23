@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{Constructions}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\thispagestyle{empty}
+\section*{Problems}
+
+\subsection*{Problem 1}
+\paragraph*{ISL 1995:}  Let $ a$ and $ b$ be non-negative integers such that $ ab \geq c^2,$ where $ c$ is an integer. Prove that there is a number $ n$ and integers $ x_1, x_2, \ldots, x_n, y_1, y_2, \ldots, y_n$ such that
+
+\[ \sum^n_{i=1} x^2_i = a, \sum^n_{i=1} y^2_i = b, \text{ and } \sum^n_{i=1} x_iy_i = c\] 
+
+\subsection*{Problem 2}
+\paragraph*{ELMO:} Sahil chooses a functional expression* $E$ which is a finite nonempty string formed from a set $x_1, x_2, \dots$ of variables and applications of a function $f$, together with addition, subtraction, multiplication (but not division), and fixed real constants. He then considers the equation $E = 0$, and lets $S$ denote the set of functions $f \colon \mathbb R \to \mathbb R$ such that the equation holds for any choices of real numbers $x_1, x_2, \dots$. (For example, if Sahil chooses the functional equation
+
+\[f(2f(x_1)+x_2) - 2f(x_1)-x_2 = 0,\]
+then $S$ consists of one function, the identity function.
+\begin{enumerate}
+    \item Let $X$ denote the set of functions with domain $\mathbb R$ and image exactly $\mathbb Z$. Show that Sahil can choose his functional equation such that $S$ is nonempty but $S \subseteq X$.
+    \item Can Sahil choose his functional equation such that $|S|=1$ and $S \subseteq X$?
+\end{enumerate}
+*These can be defined formally in the following way: the set of functional expressions is the minimal one (by inclusion) such that (i) any fixed real constant is a functional expression, (ii) for any positive integer $i$, the variable $x_i$ is a functional expression, and (iii) if $V$ and $W$ are functional expressions, then so are $f(V)$, $V+W$, $V-W$, and $V \cdot W$.
+
+\end{document}
