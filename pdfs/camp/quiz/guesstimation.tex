@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[bmargin=1in]{geometry}
+\usepackage[inline]{asymptote}
+\usepackage{comment}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{\qed\eject}
+\usepackage{hyperref}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\hyt}[2]{\hypertarget{#1 Claim #2}{\paragraph{Claim #2}}}
+\newcommand{\hyl}[2]{Same as \hyperlink{#1 Claim #2}{Claim #2 in Solution #1}}
+\newcommand{\hyr}[2]{\hyperlink{#1 Claim #2}{Claim #2}}
+\DeclareMathOperator{\pow}{pow}
+\newcommand{\nnt}{90^{\circ}}
+\newcommand{\es}{\\[12pt]}
+\usepackage{csquotes}
+\usepackage{pythonhighlight}
+
+\title{estimate}
+\author{EGMOTC 2023 - Rohan}
+\date{\today}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\localtextbulletone}{\textcolor{black}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\thispagestyle{empty}
+
+\section*{Categories}
+\begin{itemize}
+    \item I wrote some code!
+    \item That's a large number!
+    \item How many cats?
+    \item I'm here for Math oly...
+    \item Don't google that...
+\end{itemize}
+
+\eject
+
+\section*{Problems}
+
+\subsection*{I wrote some code!}
+
+\begin{enumerate}
+    \item [100] x=2023
+    k=0
+    while k<2023:
+        x= (x/2) + (2023/(2*x))
+        a=int(x/2)
+        x=x+random.randint(1,a)
+        k+=1
+    print(int(x))
+    
+    \item [200] x=[]
+    for i in range (10000):
+        a=True
+        l=list(str(i))
+        for k in l:
+            k=int(k)
+            if k==0:
+                a=False
+            elif i%k!=0:
+                a=False
+        if a==True:
+            x.append(i)
+    print(len(x)) %339
+    \item [400] 
+    while k<23:
+    for j in range(x):
+        if j<=0:
+            pass
+        else:
+            if x\%j==0:
+                y+=random.randint(1,3*j)
+            else:
+                y+=random.randint(0,1)
+    x=y
+    y=0
+    k+=1 
+\end{enumerate}
+
+\eject
+\subsection*{That's a large number!}
+\begin{itemize}
+    \item [100] land mass of earth in sq. km = 510 million
+    \item [200] power output of sun in joules per day ~ 3.3*10^31 J
+    \item [400] how many pieces of art did picasso make? Answer: 147,800
+\end{itemize}
+
+\subsection*{Don't google that}
+\begin{enumerate}
+    \item [100] Number of volcano erruptions in 2023 ~72
+    \item [200] views on EGMO23 slovenia video
+    \item [400] Tallest tree ~ 379 feet
+\end{enumerate}
+
+\subsection*{Math Oly}
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\end{document}
